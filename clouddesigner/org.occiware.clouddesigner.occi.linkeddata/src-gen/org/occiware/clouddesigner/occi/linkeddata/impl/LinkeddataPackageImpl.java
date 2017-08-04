@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.occiware.clouddesigner.occi.OCCIPackage;
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 import org.occiware.clouddesigner.occi.linkeddata.Lddatabaselink;
+import org.occiware.clouddesigner.occi.linkeddata.Ldnode;
 import org.occiware.clouddesigner.occi.linkeddata.Ldproject;
 import org.occiware.clouddesigner.occi.linkeddata.Ldprojectlink;
 import org.occiware.clouddesigner.occi.linkeddata.Lifecycle;
@@ -55,6 +56,13 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * @generated
 	 */
 	private EClass ldprojectlinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ldnodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,6 +247,51 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLdnode() {
+		return ldnodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLdnode_Name() {
+		return (EAttribute)ldnodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLdnode_MongoHosts() {
+		return (EAttribute)ldnodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLdnode_MainProject() {
+		return (EAttribute)ldnodeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLdnode_AnalyticsReadPreference() {
+		return (EAttribute)ldnodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getLifecycle() {
 		return lifecycleEEnum;
 	}
@@ -294,6 +347,12 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 
 		ldprojectlinkEClass = createEClass(LDPROJECTLINK);
 
+		ldnodeEClass = createEClass(LDNODE);
+		createEAttribute(ldnodeEClass, LDNODE__NAME);
+		createEAttribute(ldnodeEClass, LDNODE__MONGO_HOSTS);
+		createEAttribute(ldnodeEClass, LDNODE__MAIN_PROJECT);
+		createEAttribute(ldnodeEClass, LDNODE__ANALYTICS_READ_PREFERENCE);
+
 		// Create enums
 		lifecycleEEnum = createEEnum(LIFECYCLE);
 		robustnessEEnum = createEEnum(ROBUSTNESS);
@@ -333,6 +392,7 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		ldprojectEClass.getESuperTypes().add(theOCCIPackage.getResource());
 		lddatabaselinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
 		ldprojectlinkEClass.getESuperTypes().add(theOCCIPackage.getLink());
+		ldnodeEClass.getESuperTypes().add(theOCCIPackage.getResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(ldprojectEClass, Ldproject.class, "Ldproject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -351,6 +411,12 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		initEAttribute(getLddatabaselink_Port(), theOCCIPackage.getNumber(), "port", "27017", 0, 1, Lddatabaselink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ldprojectlinkEClass, Ldprojectlink.class, "Ldprojectlink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(ldnodeEClass, Ldnode.class, "Ldnode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLdnode_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Ldnode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLdnode_MongoHosts(), theOCCIPackage.getString(), "mongoHosts", null, 1, 1, Ldnode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLdnode_MainProject(), theOCCIPackage.getString(), "mainProject", null, 1, 1, Ldnode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLdnode_AnalyticsReadPreference(), theOCCIPackage.getString(), "analyticsReadPreference", null, 1, 1, Ldnode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(lifecycleEEnum, Lifecycle.class, "Lifecycle");
@@ -443,6 +509,36 @@ public class LinkeddataPackageImpl extends EPackageImpl implements LinkeddataPac
 		   source, 
 		   new String[] {
 			 "title", null
+		   });	
+		addAnnotation
+		  (ldnodeEClass, 
+		   source, 
+		   new String[] {
+			 "title", "LDNode"
+		   });	
+		addAnnotation
+		  (getLdnode_Name(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getLdnode_MongoHosts(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getLdnode_MainProject(), 
+		   source, 
+		   new String[] {
+			 "description", null
+		   });	
+		addAnnotation
+		  (getLdnode_AnalyticsReadPreference(), 
+		   source, 
+		   new String[] {
+			 "description", null
 		   });
 	}
 

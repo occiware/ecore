@@ -1,4 +1,4 @@
-// Generated at Sat Sep 24 13:41:01 CEST 2016 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.alloy
+// Generated at Fri Aug 04 14:54:16 CEST 2017 from platform:/resource/org.occiware.clouddesigner.occi.linkeddata/model/linkeddata.occie by org.occiware.clouddesigner.occi.gen.alloy
 
 // ======================================================================
 //
@@ -31,7 +31,7 @@ one sig extension extends Extension {} {
     name = "linkeddata"
     scheme = "http://occiware.org/linkeddata#"
     import = core/extension + infrastructure/extension + platform/extension
-    kinds = ldproject + lddatabaselink + ldprojectlink
+    kinds = ldproject + lddatabaselink + ldprojectlink + ldnode
     no mixins
     types = Lifecycle_DataType + Robustness_DataType
 }
@@ -212,6 +212,87 @@ one sig ldprojectlink extends Kind {} {
 sig Ldprojectlink extends core/Link {
 } {
     hasKind[ldprojectlink]
+}
+
+// ======================================================================
+//
+// OCCI kind 'http://occiware.org/linkeddata#ldnode'
+//
+// ======================================================================
+
+one sig ldnode extends Kind {} {
+    term = "ldnode"
+    scheme = "http://occiware.org/linkeddata#"
+    title = "LDNode"
+    parent = core/resource
+    attributes = ldnode_occi_ld_node_name + ldnode_occi_ld_node_mongoHosts + ldnode_occi_ld_node_mainProject + ldnode_occi_ld_node_analyticsReadPreference
+    no actions
+    entities in Ldnode
+}
+
+//
+// OCCI attribute 'occi.ld.node.name'
+//
+one sig ldnode_occi_ld_node_name extends Attribute {} {
+    name = "occi.ld.node.name"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'occi.ld.node.mongoHosts'
+//
+one sig ldnode_occi_ld_node_mongoHosts extends Attribute {} {
+    name = "occi.ld.node.mongoHosts"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'occi.ld.node.mainProject'
+//
+one sig ldnode_occi_ld_node_mainProject extends Attribute {} {
+    name = "occi.ld.node.mainProject"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+//
+// OCCI attribute 'occi.ld.node.analyticsReadPreference'
+//
+one sig ldnode_occi_ld_node_analyticsReadPreference extends Attribute {} {
+    name = "occi.ld.node.analyticsReadPreference"
+    type = core/String_DataType
+    mutable = True
+    required = True
+    no default
+    no description
+    multiple_values = False
+}
+
+// ======================================================================
+// Signature for Ldnode
+// ======================================================================
+
+sig Ldnode extends core/Resource {
+    occi_ld_node_name : one String,
+    occi_ld_node_mongoHosts : one String,
+    occi_ld_node_mainProject : one String,
+    occi_ld_node_analyticsReadPreference : one String,
+} {
+    hasKind[ldnode]
 }
 
 //

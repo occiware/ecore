@@ -69,6 +69,7 @@ public class LinkeddataFactoryImpl extends EFactoryImpl implements LinkeddataFac
 			case LinkeddataPackage.LDPROJECT: return createLdproject();
 			case LinkeddataPackage.LDDATABASELINK: return createLddatabaselink();
 			case LinkeddataPackage.LDPROJECTLINK: return createLdprojectlink();
+			case LinkeddataPackage.LDNODE: return createLdnode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +137,16 @@ public class LinkeddataFactoryImpl extends EFactoryImpl implements LinkeddataFac
 	public Ldprojectlink createLdprojectlink() {
 		LdprojectlinkImpl ldprojectlink = new LdprojectlinkImpl();
 		return ldprojectlink;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Ldnode createLdnode() {
+		LdnodeImpl ldnode = new LdnodeImpl();
+		return ldnode;
 	}
 
 	/**

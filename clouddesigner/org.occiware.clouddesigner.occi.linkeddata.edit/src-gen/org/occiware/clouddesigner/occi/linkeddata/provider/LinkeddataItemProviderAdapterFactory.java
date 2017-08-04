@@ -150,6 +150,29 @@ public class LinkeddataItemProviderAdapterFactory extends LinkeddataAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.occiware.clouddesigner.occi.linkeddata.Ldnode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LdnodeItemProvider ldnodeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.occiware.clouddesigner.occi.linkeddata.Ldnode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLdnodeAdapter() {
+		if (ldnodeItemProvider == null) {
+			ldnodeItemProvider = new LdnodeItemProvider(this);
+		}
+
+		return ldnodeItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -251,6 +274,7 @@ public class LinkeddataItemProviderAdapterFactory extends LinkeddataAdapterFacto
 		if (ldprojectItemProvider != null) ldprojectItemProvider.dispose();
 		if (lddatabaselinkItemProvider != null) lddatabaselinkItemProvider.dispose();
 		if (ldprojectlinkItemProvider != null) ldprojectlinkItemProvider.dispose();
+		if (ldnodeItemProvider != null) ldnodeItemProvider.dispose();
 	}
 
 }

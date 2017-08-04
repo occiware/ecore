@@ -57,6 +57,21 @@
     <genClasses>
       <ecoreClass href="linkeddata.ecore#//Ldprojectlink"/>
     </genClasses>
+    <genClasses>
+      <ecoreClass href="linkeddata.ecore#//Ldnode"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/mongoHosts"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/mainProject"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="linkeddata.ecore#//Ldnode/analyticsReadPreference"/>
+      </genFeatures>
+    </genClasses>
   </genPackages>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.genmodel#//infrastructure"/>
   <usedGenPackages href="platform:/plugin/org.occiware.clouddesigner.occi.platform/model/platform.genmodel#//platform"/>
