@@ -46,7 +46,7 @@ public class LdnodeConnector extends org.occiware.clouddesigner.occi.linkeddata.
 	 * Constant to be set to true if the connector to runs on the MartServer
 	 * This connector is for Eclipse only
 	 */
-	private static final boolean IS_MARTSERVER = true;
+	private static final boolean IS_MARTSERVER = false;
 
 	/**
 	 * URL of said MartServer. Must always end with a slash !
