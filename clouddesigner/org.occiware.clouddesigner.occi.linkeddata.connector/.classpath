@@ -38,9 +38,9 @@
 	<classpathentry exported="true" kind="lib" path="lib/nimbus-jose-jwt-2.17.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/openid-connect-client-1.1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/openid-connect-common-1.1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-common-1.0-SNAPSHOT.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-rest-api-1.0-SNAPSHOT.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-rest-cxf-1.0-SNAPSHOT.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-common-1.10.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-rest-api-1.10.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ozwillo-datacore-rest-cxf-1.10.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/spring-aop-3.2.10.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/spring-beans-3.2.10.RELEASE.jar"/>
