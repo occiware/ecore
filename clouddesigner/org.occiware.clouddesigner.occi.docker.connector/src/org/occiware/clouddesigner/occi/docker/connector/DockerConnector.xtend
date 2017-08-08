@@ -4,11 +4,11 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  * - Fawaz PARAISO
  * - Philippe MERLE
- * 	 
+ *
  *******************************************************************************/
 package org.occiware.clouddesigner.occi.docker.connector
 
@@ -105,7 +105,7 @@ import static org.occiware.clouddesigner.occi.docker.connector.ExecutableContain
 
 /**
  * This class overrides the generated EMF factory of the Docker package.
- * 
+ *
  * This factory creates instances of classes starting with Executable prefix
  * instead of instances of generated EMF classes suffixed by Impl.
  */
@@ -332,7 +332,7 @@ class NetworkStateMachine<T extends Network> {
 
 	/**
 	 * This method implements the transition from error state for the create action.
-	 * 
+	 *
 	 * By default, this method calls the error_execute method.
 	 */
 	def create_from_error_state() {
@@ -341,7 +341,7 @@ class NetworkStateMachine<T extends Network> {
 
 	/**
 	 * This method implements the transition from active state for the create action.
-	 * 
+	 *
 	 * By default, this method calls the create_execute method.
 	 */
 	def create_from_active_state() {
@@ -350,7 +350,7 @@ class NetworkStateMachine<T extends Network> {
 
 	/**
 	 * This method implements the transition from inactive state for the create action.
-	 * 
+	 *
 	 * By default, this method calls the create_execute method.
 	 */
 	def create_from_inactive_state() {
@@ -431,7 +431,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from inactive state for the start action.
-	 * 
+	 *
 	 * By default, this method calls the start_execute method.
 	 */
 	def start_from_inactive_state() {
@@ -444,7 +444,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from active state for the start action.
-	 * 
+	 *
 	 * By default, this method does nothing.
 	 */
 	def start_from_active_state() {
@@ -454,7 +454,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from suspended state for the start action.
-	 * 
+	 *
 	 * By default, this method calls the start_execute method.
 	 */
 	def start_from_suspended_state() {
@@ -497,7 +497,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from inactive state for the stop action.
-	 * 
+	 *
 	 * By default, this method does nothing.
 	 */
 	def stop_from_inactive_state(StopMethod method) {
@@ -506,7 +506,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from active state for the stop action.
-	 * 
+	 *
 	 * By default, this method calls the stop_execute method.
 	 */
 	def stop_from_active_state(StopMethod method) {
@@ -515,7 +515,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from suspended state for the stop action.
-	 * 
+	 *
 	 * By default, this method calls the stop_execute method.
 	 */
 	def stop_from_suspended_state(StopMethod method) {
@@ -555,7 +555,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from inactive state for the restart action.
-	 * 
+	 *
 	 * By default, this method calls the restart_execute method.
 	 */
 	def restart_from_inactive_state(RestartMethod method) {
@@ -564,7 +564,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from active state for the restart action.
-	 * 
+	 *
 	 * By default, this method calls the restart_execute method.
 	 */
 	def restart_from_active_state(RestartMethod method) {
@@ -573,7 +573,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from suspended state for the restart action.
-	 * 
+	 *
 	 * By default, this method calls the restart_execute method.
 	 */
 	def restart_from_suspended_state(RestartMethod method) {
@@ -612,7 +612,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from inactive state for the suspend action.
-	 * 
+	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
 	def suspend_from_inactive_state(SuspendMethod method) {
@@ -621,7 +621,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from active state for the suspend action.
-	 * 
+	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
 	def suspend_from_active_state(SuspendMethod method) {
@@ -630,7 +630,7 @@ class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method implements the transition from suspended state for the suspend action.
-	 * 
+	 *
 	 * By default, this method does nothing.
 	 */
 	def suspend_from_suspended_state(SuspendMethod method) {
@@ -893,7 +893,7 @@ class StatsCallback extends ResultCallbackTemplate<StatsCallback, Statistics> {
 					// Modify the resource only if it is in active state
 					if ((resource as ExecutableContainer).state == ComputeStatus.ACTIVE) {
 
-						// Update Attributes only if change occurs						
+						// Update Attributes only if change occurs
 						if ((resource as ExecutableContainer).memory_used != Integer.parseInt(mem_used.toString)) {
 							(resource as ExecutableContainer).memory_used = Integer.parseInt(mem_used.toString)
 						}
@@ -1261,7 +1261,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		val StringBuilder parameter = new StringBuilder
 
 		var Map<org.occiware.clouddesigner.occi.docker.Container, Set<NetworkLink>> networks = detectNetworkLink
-		
+
 		// Check other parameters
 		if (compute.swarm) {
 			parameter.append(' --swarm')
@@ -1315,19 +1315,19 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName)
-		// Add the corresponding command 
+		// Add the corresponding command
 		appendDriverParameters(command)
 		// Add Parameters to command
 		command.append(' ').append(parameter)
 		command.append(' ').append(compute.name)
 
 		LOGGER.info("CMD : #{}", command.toString)
-		
+
 		// Get the existing machines
 		val hosts = DockerUtil.getHosts
 		// Get the active machine
 		val activeHosts = hosts.filter[host, status|DockerUtil.HOST_RUNNING.equalsIgnoreCase(status)]
-		
+
 		if (!hosts.containsKey(compute.name)) { // Check if machine exists in the real environment
 		// Create the machine and start it
 			ProcessManager.runCommand(command.toString, runtime, true)
@@ -1343,9 +1343,9 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		this.createNetwork(networks)
 		// Connect all container to network overlay
 		this.connectToNetwork(this.compute, networks)
-		
+
 	}
-	
+
 	override def startAll_execute() {
 
 		// Initialize the runtime
@@ -1427,7 +1427,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			// Set state
 			compute.state = ComputeStatus.ACTIVE
-		
+
 			// Create the network if it exists
 			this.createNetwork(networks)
 
@@ -1594,10 +1594,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 			}
 		}
-		
+
 		// Connect all container to network overlay
 		this.connectToNetwork(this.compute, networks)
-		
+
 		LOGGER.info("EXECUTE COMMAND: " + command.toString)
 	}
 
@@ -1626,7 +1626,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 					tmpNetwork.networkId = networkId
 					LOGGER.info("Network name=#{} was created inside ---> machine #{}", tmpNetwork.name, this.compute.name)
 					//TODO change this with Network StateMachine
-					// Change the Network State 
+					// Change the Network State
 					tmpNetwork.state = NetworkStatus.ACTIVE
 					}
 				}
@@ -1639,7 +1639,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 		// Get all hosts in the real environment
 		val hosts = DockerUtil.getHosts
-		
+
 		// refreshing compute state :
 		// (else synchronize useless, because fails if machine stopped without the model knowing it)
 		if (hosts.containsKey(compute.name)
@@ -1655,7 +1655,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		}
 		// NB. another way could be by testing model built from Docker introspection :
 		// instanceMH.getModel(this.compute.name, hosts.get(this.compute.name), false).state
-		
+
 		if (this.compute.state.toString.equalsIgnoreCase("active")) {
 			val instanceMH = new ModelHandler
 			val instance = new DockerContainerManager(this.compute)
@@ -1678,7 +1678,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 								LOGGER.info("Creating the container: " + con.name)
 								con.createContainer(this.machine)
 								LOGGER.info("The container is created")
-								
+
 							} else if (con.containerid != dc.id) {
 								con.containerid = dc.id // update id else start cmd ill fail
 							}
@@ -1706,7 +1706,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 
 							// Create container
 							con.createContainer(this.machine, this.containerDependency)
-							
+
 						} else if (con.containerid != dc.id) {
 							con.containerid = dc.id // update id else start cmd ill fail
 						}
@@ -1743,7 +1743,7 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 		 * 					}
 		 * 				}
 		 * 			}
-		 * 
+		 *
 		 * 		}
 		 * 	}
 		 */
@@ -1829,10 +1829,10 @@ abstract class MachineManager extends ComputeStateMachine<Machine> {
 				LOGGER.info("--->" + c.value)
 			}
 		}
-			
+
 		} catch (NullPointerException exception) {
-			
-		}		
+
+		}
 		// Add standalone container
 		for (org.occiware.clouddesigner.occi.docker.Container standaloneContainer : this.leafContainers) {
 			if (!containers.contains(standaloneContainer)) {
@@ -2011,7 +2011,7 @@ class ExecutableMachine_Generic extends Machine_GenericImpl {
 		}
 
 		override def appendDriverParameters(StringBuilder sb) {
-			if (!StringUtils.isEmpty(engine_port.toString)) {
+			if (!(StringUtils.isEmpty(engine_port.toString) || "0".equals(engine_port.toString))) {
 				sb.append(" --generic-engine-port ").append(engine_port)
 			}
 			if (!StringUtils.isEmpty(ip_address)) {
@@ -2020,9 +2020,12 @@ class ExecutableMachine_Generic extends Machine_GenericImpl {
 			if (!StringUtils.isEmpty(ssh_user)) {
 				sb.append(" --generic-ssh-user ").append(ssh_user)
 			}
-			if (!StringUtils.isEmpty(ssh_port.toString)) {
-				sb.append(" --generic-ssh-user ").append(ssh_port)
+			if (!(StringUtils.isEmpty(ssh_port.toString) || "0".equals(ssh_port.toString))) {
+				sb.append(" --generic-ssh-port ").append(ssh_port)
 			}
+            if (!(StringUtils.isEmpty(ssh_key.toString) || "0".equals(ssh_key.toString))) {
+                sb.append(" --generic-ssh-key ").append(ssh_key)
+            }
 		}
 	}
 
@@ -2146,7 +2149,7 @@ class ExecutableMachine_Digital_Ocean extends Machine_Digital_OceanImpl {
 				sb.append(" --digitalocean-image ").append(image)
 			}
 
-		// Update the model with the new attributs			
+		// Update the model with the new attributs
 		}
 	}
 
@@ -3046,7 +3049,7 @@ class ExecutableCluster extends ClusterImpl {
 
 	// Initialize logger for ExecutableDockerModel.
 	private static Logger LOGGER = LoggerFactory.getLogger(typeof(ExecutableCluster))
-	
+
 }
 
 /**
@@ -3132,7 +3135,7 @@ class ExecutableDockerModel {
 			machine_Grid5000 = machine
 		}else if (machine instanceof Machine_Exoscale) {
 			machine_Exoscale = machine
-		}				
+		}
 	}
 
 	new(Configuration configuration) {
