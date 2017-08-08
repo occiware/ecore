@@ -68,4 +68,32 @@
       <details key="title"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ldnode" eSuperTypes="platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//Resource">
+    <eAnnotations source="OCCIE2Ecore">
+      <details key="title" value="LDNode"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mongoHosts" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mainProject" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="analyticsReadPreference"
+        lowerBound="1" eType="ecore:EDataType platform:/plugin/org.occiware.clouddesigner.occi/model/OCCI.ecore#//String">
+      <eAnnotations source="OCCIE2Ecore">
+        <details key="description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
 </ecore:EPackage>

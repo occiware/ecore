@@ -93,6 +93,10 @@ public class LinkeddataAdapterFactory extends AdapterFactoryImpl {
 				return createLdprojectlinkAdapter();
 			}
 			@Override
+			public Adapter caseLdnode(Ldnode object) {
+				return createLdnodeAdapter();
+			}
+			@Override
 			public Adapter caseEntity(Entity object) {
 				return createEntityAdapter();
 			}
@@ -163,6 +167,20 @@ public class LinkeddataAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLdprojectlinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.occiware.clouddesigner.occi.linkeddata.Ldnode <em>Ldnode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.occiware.clouddesigner.occi.linkeddata.Ldnode
+	 * @generated
+	 */
+	public Adapter createLdnodeAdapter() {
 		return null;
 	}
 
