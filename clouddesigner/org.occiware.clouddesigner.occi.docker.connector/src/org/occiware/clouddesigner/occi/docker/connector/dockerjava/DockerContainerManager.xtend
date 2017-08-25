@@ -68,6 +68,7 @@ import org.occiware.clouddesigner.occi.docker.Volumesfrom
 import com.github.dockerjava.api.model.VolumesFrom
 import org.occiware.clouddesigner.occi.Resource
 import com.github.dockerjava.api.model.Bind
+import com.github.dockerjava.api.model.PortBinding
 
 class DockerContainerManager {
 	private static DockerClient dockerClient = null
@@ -269,19 +270,27 @@ class DockerContainerManager {
 		}
 		LOGGER.info("Container ports = " + container.ports)
 		if (StringUtils.isNotBlank(container.ports)) {
-			val String[] l_r_ports = container.ports.split(":")
-			var ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
-			val Ports portBindings = new Ports
-			// Exposed port is set with l_r_ports.get(0)
-			// Binding port is set with l_r_ports.get(1)
-			if (l_r_ports.size == 2) {
-				if (StringUtils.isNotBlank(l_r_ports.get(1))) {
-					portBindings.bind(tcp, Binding.bindPort(Integer.parseInt(l_r_ports.get(1))))
-				} else {
-					portBindings.bind(tcp, Binding.bindPort(32768)) // TODO Create dynamic port number
+			val String[] unparsedPortBindings = container.ports.split(" ")
+			var List<ExposedPort> exposedPortsList = new ArrayList<ExposedPort>
+			var List<PortBinding> portBindingsList = new ArrayList<PortBinding>
+			for (var i = 0; i < unparsedPortBindings.length; i++) {
+				val String[] l_r_ports = unparsedPortBindings.get(i).split(":")
+				var ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(l_r_ports.get(0)))
+				var PortBinding portBindings = null
+				// Exposed port is set with l_r_ports.get(0)
+				// Binding port is set with l_r_ports.get(1)
+				if (l_r_ports.size == 2) {
+					if (StringUtils.isNotBlank(l_r_ports.get(1))) {
+						portBindings = new PortBinding(Binding.bindPort(Integer.parseInt(l_r_ports.get(1))), tcp)
+					} else {
+						portBindings = new PortBinding(Binding.bindPort(32768), tcp) // TODO Create dynamic port number
+					}
 				}
+				exposedPortsList.add(tcp)
+				portBindingsList.add(portBindings)
 			}
-			create.withExposedPorts(tcp).withPortBindings(portBindings)
+
+			create.withExposedPorts(exposedPortsList).withPortBindings(portBindingsList)
 		}
 		if (StringUtils.isNotBlank(container.name)) {
 			create.withName(StringUtils.deleteWhitespace(container.name))
