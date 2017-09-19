@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -57,8 +57,8 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @return the value of the '<em>Subscription id</em>' attribute.
 	 * @see #setSubscription_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_id()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubscription_id();
@@ -84,8 +84,8 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @return the value of the '<em>Subscription cert</em>' attribute.
 	 * @see #setSubscription_cert(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subscription_cert()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Your Azure subscription cert'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubscription_cert();
@@ -113,7 +113,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setEnvironment(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Environment()
 	 * @model default="AzurePublicCloud" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure environment (e.g. AzurePublicCloud, AzureChinaCloud).'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -140,7 +140,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setLocation(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Location()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure region to create the virtual machine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getLocation();
@@ -168,7 +168,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setResource_group(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Resource_group()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure Resource Group name to create the resources in.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getResource_group();
@@ -195,7 +195,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSize(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Size()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Size for Azure Virtual Machine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSize();
@@ -222,7 +222,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Ssh_user()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Username for SSH login.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_user();
@@ -250,7 +250,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setVnet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Vnet()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure Virtual Network name to connect the virtual machine. To specify a Virtual Network from another resource group, use resourcegroup:vnet-name format.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVnet();
@@ -277,7 +277,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSubnet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subnet()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure Subnet Name to be used within the Virtual Network.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubnet();
@@ -305,7 +305,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setSubnet_prefix(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Subnet_prefix()
 	 * @model default="192.168.0.0/16" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Private CIDR block. Used to create subnet if it does not exist. Must match in the case that the subnet does exist.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubnet_prefix();
@@ -333,7 +333,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setAvailability_set(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Availability_set()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure Availability Set to place the virtual machine into.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAvailability_set();
@@ -360,7 +360,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setOpen_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Open_port()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description=' Make additional port number(s) accessible from the Internet'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getOpen_port();
@@ -387,7 +387,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setPrivate_ip_address(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Private_ip_address()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify a static private IP address for the machine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPrivate_ip_address();
@@ -414,7 +414,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setNo_public_ip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_No_public_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Do not create a public IP address for the machine (implies --azure-use-private-ip). '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNo_public_ip();
@@ -441,7 +441,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setStatic_public_ip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Static_public_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Assign a static public IP address to the machine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getStatic_public_ip();
@@ -469,7 +469,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setDocker_port(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Docker_port()
 	 * @model default="2376" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Port number for Docker engine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDocker_port();
@@ -496,7 +496,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setUse_private_ip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Use_private_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description=' Use private IP address of the machine to connect. It\u2019s useful for managing Docker machines from another machine on the same network e.g. while deploying Swarm.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUse_private_ip();
@@ -523,7 +523,7 @@ public interface Machine_Microsoft_Azure extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Azure_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Azure virtual machine image in the format of Publisher:Offer:Sku:Version'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();

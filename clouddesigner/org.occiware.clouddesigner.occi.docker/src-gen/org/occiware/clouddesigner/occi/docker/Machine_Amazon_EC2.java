@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -50,8 +50,8 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Access key</em>' attribute.
 	 * @see #setAccess_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Access_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Your access key id for the Amazon Web Services API'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAccess_key();
@@ -79,7 +79,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setAmi(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Ami()
 	 * @model default="ami-4ae27e22" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The AMI ID of the instance to use'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAmi();
@@ -107,7 +107,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setInstance_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Instance_type()
 	 * @model default="t2.micro" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The instance type to run'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getInstance_type();
@@ -135,7 +135,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Region()
 	 * @model default="us-east-1" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The region to use when launching the instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -163,7 +163,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setRoot_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Root_size()
 	 * @model default="16" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The root disk size of the instance (in GB)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getRoot_size();
@@ -189,8 +189,8 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Secret key</em>' attribute.
 	 * @see #setSecret_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Secret_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Your secret access key for the Amazon Web Services API'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecret_key();
@@ -218,7 +218,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Security_group()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='AWS VPC security group name'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_group();
@@ -245,7 +245,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setSession_token(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Session_token()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Your session token for the Amazon Web Services API'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSession_token();
@@ -272,7 +272,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setSubnet_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Subnet_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='AWS VPC subnet id'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubnet_id();
@@ -298,8 +298,8 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @return the value of the '<em>Vpc id</em>' attribute.
 	 * @see #setVpc_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Vpc_id()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Your VPC ID to launch the instance in'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVpc_id();
@@ -327,7 +327,7 @@ public interface Machine_Amazon_EC2 extends Machine {
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Amazon_EC2_Zone()
 	 * @model default="a" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The AWS zone launch the instance in (i.e. one of a,b,c,d,e)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getZone();

@@ -1,46 +1,26 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
+
 import org.occiware.clouddesigner.occi.Entity;
 import org.occiware.clouddesigner.occi.Resource;
-import org.occiware.clouddesigner.occi.docker.Cluster;
-import org.occiware.clouddesigner.occi.docker.Container;
-import org.occiware.clouddesigner.occi.docker.Contains;
-import org.occiware.clouddesigner.occi.docker.DockerPackage;
-import org.occiware.clouddesigner.occi.docker.Link;
-import org.occiware.clouddesigner.occi.docker.Machine;
-import org.occiware.clouddesigner.occi.docker.Machine_Amazon_EC2;
-import org.occiware.clouddesigner.occi.docker.Machine_Digital_Ocean;
-import org.occiware.clouddesigner.occi.docker.Machine_Exoscale;
-import org.occiware.clouddesigner.occi.docker.Machine_Generic;
-import org.occiware.clouddesigner.occi.docker.Machine_Google_Compute_Engine;
-import org.occiware.clouddesigner.occi.docker.Machine_Grid5000;
-import org.occiware.clouddesigner.occi.docker.Machine_IBM_SoftLayer;
-import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Azure;
-import org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V;
-import org.occiware.clouddesigner.occi.docker.Machine_OpenStack;
-import org.occiware.clouddesigner.occi.docker.Machine_Rackspace;
-import org.occiware.clouddesigner.occi.docker.Machine_VMware_Fusion;
-import org.occiware.clouddesigner.occi.docker.Machine_VMware_vCloud_Air;
-import org.occiware.clouddesigner.occi.docker.Machine_VMware_vSphere;
-import org.occiware.clouddesigner.occi.docker.Machine_VirtualBox;
-import org.occiware.clouddesigner.occi.docker.Network;
-import org.occiware.clouddesigner.occi.docker.NetworkLink;
-import org.occiware.clouddesigner.occi.docker.Volume;
-import org.occiware.clouddesigner.occi.docker.Volumesfrom;
+
+import org.occiware.clouddesigner.occi.docker.*;
+
 import org.occiware.clouddesigner.occi.infrastructure.Compute;
 import org.occiware.clouddesigner.occi.infrastructure.Storage;
 
@@ -664,21 +644,6 @@ public class DockerSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Cluster</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cluster</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCluster(Cluster object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Machine Grid5000</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -690,6 +655,21 @@ public class DockerSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMachine_Grid5000(Machine_Grid5000 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cluster</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCluster(Cluster object) {
 		return null;
 	}
 

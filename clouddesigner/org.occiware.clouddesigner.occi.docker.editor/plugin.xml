@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
+
 <!--
- Copyright (c) 2015-2016 Inria
+ Copyright (c) 2015-2016 Obeo, Inria
  All rights reserved. This program and the accompanying materials
  are made available under the terms of the Eclipse Public License v1.0
  which accompanies this distribution, and is available at
  http://www.eclipse.org/legal/epl-v10.html
  	
  Contributors:
- - Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ - William Piers <william.piers@obeo.fr>
  - Philippe Merle <philippe.merle@inria.fr>
 -->
+
 <plugin>
 
-   <!-- New wizard for creating Docker models. -->
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated Docker NOT -->
+      <!-- @generated docker -->
       <category
-			id="org.occiware.clouddesigner.category.ID"
-			name="Cloud Designer"/>
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
       <wizard
             id="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizardID"
             name="%_UI_DockerModelWizard_label"
             class="org.occiware.clouddesigner.occi.docker.presentation.DockerModelWizard"
-            category="org.occiware.clouddesigner.category.ID"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DockerModelFile.gif">
          <description>%_UI_DockerModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
-    <!-- Docker Model Editor. -->
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated Docker -->
+      <!-- @generated docker -->
       <editor
             id="org.occiware.clouddesigner.occi.docker.presentation.DockerEditorID"
             name="%_UI_DockerEditor_label"

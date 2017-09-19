@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -48,8 +48,8 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Username()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Rackspace account username'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -75,8 +75,8 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Api key</em>' attribute.
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Api_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Rackspace API key'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -102,8 +102,8 @@ public interface Machine_Rackspace extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Region()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Rackspace region name'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -131,7 +131,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setEndpoint_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Endpoint_type()
 	 * @model default="publicURL" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Rackspace endpoint type (adminURL, internalURL or the default publicURL)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEndpoint_type();
@@ -159,7 +159,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Image_id()
 	 * @model default="59a3fadd-93e7-4674-886a-64883e17115f" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Rackspace image ID '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_id();
@@ -187,7 +187,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Flavor_id()
 	 * @model default="general1-1" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Rackspace flavor ID'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -215,7 +215,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Ssh_user()
 	 * @model default="root" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='SSH user for the newly booted machine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_user();
@@ -243,7 +243,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Ssh_port()
 	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='SSH port for the newly booted machine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getSsh_port();
@@ -271,7 +271,7 @@ public interface Machine_Rackspace extends Machine {
 	 * @see #setDocker_install(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Rackspace_Docker_install()
 	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Set if Docker has to be installed on the machine.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isDocker_install();

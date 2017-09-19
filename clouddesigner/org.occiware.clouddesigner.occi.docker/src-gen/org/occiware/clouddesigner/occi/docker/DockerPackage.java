@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -16,7 +16,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.occiware.clouddesigner.occi.OCCIPackage;
+
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 
 /**
@@ -26,6 +28,7 @@ import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -9315,16 +9318,6 @@ public interface DockerPackage extends EPackage {
 	int MACHINE_EXOSCALE_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
-	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
-	 * @generated
-	 */
-	int CLUSTER = 23;
-
-	/**
 	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9819,6 +9812,16 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINE_GRID5000_OPERATION_COUNT = MACHINE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+	 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+	 * @generated
+	 */
+	int CLUSTER = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -11923,6 +11926,17 @@ public interface DockerPackage extends EPackage {
 	EClass getMachine_Microsoft_Hyper_V();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Virtual switch</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch()
+	 * @see #getMachine_Microsoft_Hyper_V()
+	 * @generated
+	 */
+	EAttribute getMachine_Microsoft_Hyper_V_Virtual_switch();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getBoot2docker_url <em>Boot2docker url</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11965,17 +11979,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_Microsoft_Hyper_V_Vlan_id();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Virtual switch</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch()
-	 * @see #getMachine_Microsoft_Hyper_V()
-	 * @generated
-	 */
-	EAttribute getMachine_Microsoft_Hyper_V_Virtual_switch();
 
 	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_OpenStack <em>Machine Open Stack</em>}'.
@@ -12994,27 +12997,6 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Exoscale_Affinity_group();
 
 	/**
-	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Cluster</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.Cluster
-	 * @generated
-	 */
-	EClass getCluster();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Cluster#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.occiware.clouddesigner.occi.docker.Cluster#getName()
-	 * @see #getCluster()
-	 * @generated
-	 */
-	EAttribute getCluster_Name();
-
-	/**
 	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Machine_Grid5000 <em>Machine Grid5000</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13135,6 +13117,27 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_Grid5000_Host_to_provision();
 
 	/**
+	 * Returns the meta object for class '{@link org.occiware.clouddesigner.occi.docker.Cluster <em>Cluster</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cluster</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster
+	 * @generated
+	 */
+	EClass getCluster();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.occiware.clouddesigner.occi.docker.Cluster#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.occiware.clouddesigner.occi.docker.Cluster#getName()
+	 * @see #getCluster()
+	 * @generated
+	 */
+	EAttribute getCluster_Name();
+
+	/**
 	 * Returns the meta object for enum '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -13159,6 +13162,7 @@ public interface DockerPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
@@ -14557,6 +14561,14 @@ public interface DockerPackage extends EPackage {
 		EClass MACHINE_MICROSOFT_HYPER_V = eINSTANCE.getMachine_Microsoft_Hyper_V();
 
 		/**
+		 * The meta object literal for the '<em><b>Virtual switch</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH = eINSTANCE.getMachine_Microsoft_Hyper_V_Virtual_switch();
+
+		/**
 		 * The meta object literal for the '<em><b>Boot2docker url</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14587,14 +14599,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_MICROSOFT_HYPER_V__VLAN_ID = eINSTANCE.getMachine_Microsoft_Hyper_V_Vlan_id();
-
-		/**
-		 * The meta object literal for the '<em><b>Virtual switch</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH = eINSTANCE.getMachine_Microsoft_Hyper_V_Virtual_switch();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_OpenStackImpl <em>Machine Open Stack</em>}' class.
@@ -15355,24 +15359,6 @@ public interface DockerPackage extends EPackage {
 		EAttribute MACHINE_EXOSCALE__AFFINITY_GROUP = eINSTANCE.getMachine_Exoscale_Affinity_group();
 
 		/**
-		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
-		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
-		 * @generated
-		 */
-		EClass CLUSTER = eINSTANCE.getCluster();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CLUSTER__NAME = eINSTANCE.getCluster_Name();
-
-		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.Machine_Grid5000Impl <em>Machine Grid5000</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -15461,6 +15447,24 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE_GRID5000__HOST_TO_PROVISION = eINSTANCE.getMachine_Grid5000_Host_to_provision();
+
+		/**
+		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.impl.ClusterImpl <em>Cluster</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.occiware.clouddesigner.occi.docker.impl.ClusterImpl
+		 * @see org.occiware.clouddesigner.occi.docker.impl.DockerPackageImpl#getCluster()
+		 * @generated
+		 */
+		EClass CLUSTER = eINSTANCE.getCluster();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLUSTER__NAME = eINSTANCE.getCluster_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.occiware.clouddesigner.occi.docker.Mode <em>Mode</em>}' enum.

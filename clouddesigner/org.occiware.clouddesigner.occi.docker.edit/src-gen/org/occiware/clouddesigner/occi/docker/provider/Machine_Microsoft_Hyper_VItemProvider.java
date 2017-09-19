@@ -64,6 +64,28 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Virtual switch feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVirtual_switchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
+				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Boot2docker url feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,28 +165,6 @@ public class Machine_Microsoft_Hyper_VItemProvider extends MachineItemProvider {
 				 getString("_UI_Machine_Microsoft_Hyper_V_vlan_id_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_vlan_id_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
 				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__VLAN_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Virtual switch feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addVirtual_switchPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Machine_Microsoft_Hyper_V_virtual_switch_feature", "_UI_Machine_Microsoft_Hyper_V_type"),
-				 DockerPackage.Literals.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH,
 				 true,
 				 false,
 				 false,

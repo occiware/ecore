@@ -51,7 +51,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setUrl(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Url()
 	 * @model default="https://api.exoscale.ch/compute" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Your API endpoint.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUrl();
@@ -77,8 +77,8 @@ public interface Machine_Exoscale extends Machine {
 	 * @return the value of the '<em>Api key</em>' attribute.
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Api_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='required Your API key.'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -104,8 +104,8 @@ public interface Machine_Exoscale extends Machine {
 	 * @return the value of the '<em>Api secret key</em>' attribute.
 	 * @see #setApi_secret_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Api_secret_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='required Your API secret key.'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_secret_key();
@@ -133,7 +133,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setInstance_profile(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Instance_profile()
 	 * @model default="small" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Instance profile.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getInstance_profile();
@@ -161,7 +161,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Image()
 	 * @model default="ubuntu-16.04" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Image template (e.g. ubuntu-16.04, ubuntu-15.10).'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -188,7 +188,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setSecurity_group(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Security_group()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Security group. It will be created if it doesn\u2019t exist.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSecurity_group();
@@ -215,7 +215,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setAvailability_zone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Availability_zone()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Exoscale availability zone.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAvailability_zone();
@@ -243,7 +243,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Ssh_user()
 	 * @model default="ubuntu" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='SSH username, which must match the default SSH user for the used image.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_user();
@@ -270,7 +270,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setUserdata(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Userdata()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Path to file containing user data for cloud-init.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUserdata();
@@ -298,7 +298,7 @@ public interface Machine_Exoscale extends Machine {
 	 * @see #setAffinity_group(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Exoscale_Affinity_group()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Affinity group the machine will be started in.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAffinity_group();

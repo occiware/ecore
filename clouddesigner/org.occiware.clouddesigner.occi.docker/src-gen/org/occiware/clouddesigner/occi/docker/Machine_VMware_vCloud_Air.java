@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -54,8 +54,8 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Username()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='vCloud Air Username'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -81,8 +81,8 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Password()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='vCloud Air Password'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -110,7 +110,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCatalog(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Catalog()
 	 * @model default="Public Catalog" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Catalog '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCatalog();
@@ -138,7 +138,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCatalogitem(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Catalogitem()
 	 * @model default="Ubuntu Server 12.04 LTS (amd64 20140927)" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Catalog Item '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCatalogitem();
@@ -165,7 +165,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setComputeid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Computeid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Compute ID (if using Dedicated Cloud)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getComputeid();
@@ -193,7 +193,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setCpu_count(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Cpu_count()
 	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='VM Cpu Count'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu_count();
@@ -221,7 +221,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setDocker_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Docker_port()
 	 * @model default="2376" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Docker port '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDocker_port();
@@ -249,7 +249,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setEdgegateway(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Edgegateway()
 	 * @model default="<vdcid>" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Organization Edge Gateway'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEdgegateway();
@@ -277,7 +277,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Memory_size()
 	 * @model default="2048" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='VM Memory Size in MB'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_size();
@@ -305,7 +305,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setVapp_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Vapp_name()
 	 * @model default="<autogenerated>" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='vApp Name'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVapp_name();
@@ -333,7 +333,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setOrgvdcnetwork(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Orgvdcnetwork()
 	 * @model default="<vdcid>-default-routed" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Organization VDC Network to attach'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getOrgvdcnetwork();
@@ -361,7 +361,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setProvision(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Provision()
 	 * @model default="true" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Install Docker binaries'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isProvision();
@@ -388,7 +388,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setPublicip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Publicip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Org Public IP to use'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPublicip();
@@ -416,7 +416,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Ssh_port()
 	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='SSH port'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getSsh_port();
@@ -443,7 +443,7 @@ public interface Machine_VMware_vCloud_Air extends Machine {
 	 * @see #setVdcid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vCloud_Air_Vdcid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Virtual Data Center ID'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVdcid();

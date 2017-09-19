@@ -51,7 +51,7 @@ public interface Volume extends Storage {
 	 * @see #setDriver(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Driver()
 	 * @model default="local" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description=' Specify volume driver name (default \"local\")'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDriver();
@@ -78,7 +78,7 @@ public interface Volume extends Storage {
 	 * @see #setLabels(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Labels()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Set metadata for a volume (default [])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getLabels();
@@ -105,7 +105,7 @@ public interface Volume extends Storage {
 	 * @see #setOptions(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Options()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Set driver specific options (default map[])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getOptions();
@@ -132,7 +132,7 @@ public interface Volume extends Storage {
 	 * @see #setSource(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Source()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The volume Mountpoint ex. the /host/directory'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSource();
@@ -159,7 +159,7 @@ public interface Volume extends Storage {
 	 * @see #setDestination(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Destination()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The volume name inside the container ex. /container/path'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDestination();
@@ -186,7 +186,7 @@ public interface Volume extends Storage {
 	 * @see #setMode(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Mode()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify volume driver name'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMode();
@@ -213,7 +213,7 @@ public interface Volume extends Storage {
 	 * @see #setRw(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Rw()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The volume Read/Write access'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRw();
@@ -240,7 +240,7 @@ public interface Volume extends Storage {
 	 * @see #setPropagation(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Propagation()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The volume propagation'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPropagation();
@@ -267,7 +267,7 @@ public interface Volume extends Storage {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getVolume_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The volume name.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getName();

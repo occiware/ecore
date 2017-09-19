@@ -49,8 +49,8 @@ public interface Machine_Grid5000 extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Username()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Grid5000 account username'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -76,8 +76,8 @@ public interface Machine_Grid5000 extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Password()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Grid5000 account password'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -103,8 +103,8 @@ public interface Machine_Grid5000 extends Machine {
 	 * @return the value of the '<em>Site</em>' attribute.
 	 * @see #setSite(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Site()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Site to reserve the resources on'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSite();
@@ -131,7 +131,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setWalltime(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Walltime()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Timelife of the machine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getWalltime();
@@ -158,7 +158,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setSsh_private_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Ssh_private_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Path of your ssh private key'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_private_key();
@@ -185,7 +185,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setSsh_public_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Ssh_public_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Path of your ssh public key'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_public_key();
@@ -212,7 +212,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Name of the image to deploy'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -239,7 +239,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setResource_properties(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Resource_properties()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Resource selection with OAR properties (SQL format)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getResource_properties();
@@ -266,7 +266,7 @@ public interface Machine_Grid5000 extends Machine {
 	 * @see #setUse_job_reservation(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Use_job_reservation()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Job ID to use (need to be an already existing job ID)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUse_job_reservation();
@@ -292,7 +292,8 @@ public interface Machine_Grid5000 extends Machine {
 	 * @return the value of the '<em>Host to provision</em>' attribute.
 	 * @see #setHost_to_provision(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Grid5000_Host_to_provision()
-	 * @model annotation="OCCIE2Ecore description='Host to provision (host need to be already deployed)'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getHost_to_provision();

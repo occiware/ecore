@@ -1,0 +1,63 @@
+h1. OCCI Core Model
+
+| *Name* | core |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+
+h1. Kinds
+
+h2. Kind entity
+
+| *Term* | entity |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Entity type |
+| *Parent* |  |
+
+Attributes of entity are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.id | <a href="core.textile#datatype-string">String</a> | true | false |  | The unique identity of the instance. |
+| occi.core.title | <a href="core.textile#datatype-string">String</a> | false | true |  | The display name of the instance. |
+
+
+h2. Kind resource
+
+| *Term* | resource |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Resource |
+| *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
+
+Attributes of resource are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| occi.core.summary | <a href="core.textile#datatype-string">String</a> | false | true |  | A summarising description of the Resource instance. |
+
+
+h2. Kind link
+
+| *Term* | link |
+| *Scheme* | http://schemas.ogf.org/occi/core# |
+| *Title* | Link |
+| *Parent* | <a href="core.textile#kind-entity">http://schemas.ogf.org/occi/core#entity</a> |
+
+
+h1. Types
+
+h2. Datatype String
+
+Data type for strings.
+
+Base type: java.lang.String
+
+h2. Datatype Boolean
+
+Data type for booleans.
+
+Base type: boolean
+
+h2. Datatype Number
+
+Data type for numbers.
+
+Base type: int
+
+Generated at Tue Sep 19 10:22:27 CEST 2017 from http://schemas.ogf.org/occi/core by org.occiware.clouddesigner.occi.gen.doc

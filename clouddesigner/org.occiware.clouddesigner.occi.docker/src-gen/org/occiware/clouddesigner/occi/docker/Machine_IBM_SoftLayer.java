@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -54,7 +54,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setApi_endpoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_endpoint()
 	 * @model default="api.softlayer.com/rest/v3" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Change softlayer API endpoint'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_endpoint();
@@ -80,8 +80,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_User()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='username for your softlayer account, api key needs to match this user'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUser();
@@ -107,8 +107,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Api key</em>' attribute.
 	 * @see #setApi_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Api_key()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='API key for your user account'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getApi_key();
@@ -135,7 +135,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setCpu(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Cpu()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Number of CPU\'s for the machine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu();
@@ -162,7 +162,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Disk_size()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of the disk in MB. 0 sets the softlayer default'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -188,8 +188,8 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @return the value of the '<em>Domain</em>' attribute.
 	 * @see #setDomain(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Domain()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='domain name for the machine'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDomain();
@@ -217,7 +217,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setHourly_billing(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Hourly_billing()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Sets the hourly billing flag (default), otherwise uses monthly billing'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isHourly_billing();
@@ -245,7 +245,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Image()
 	 * @model default="UBUNTU_LATEST" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='OS Image to use'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -273,7 +273,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setLocal_disk(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Local_disk()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Use local machine disk instead of softlayer SAN'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isLocal_disk();
@@ -300,7 +300,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setPrivate_net_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Private_net_only()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Disable public networking'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isPrivate_net_only();
@@ -327,7 +327,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='softlayer region'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -355,7 +355,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setPublic_vlan_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Public_vlan_id()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Your public VLAN ID.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPublic_vlan_id();
@@ -383,7 +383,7 @@ public interface Machine_IBM_SoftLayer extends Machine {
 	 * @see #setPrivate_vlan_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_IBM_SoftLayer_Private_vlan_id()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Your private VLAN ID.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPrivate_vlan_id();

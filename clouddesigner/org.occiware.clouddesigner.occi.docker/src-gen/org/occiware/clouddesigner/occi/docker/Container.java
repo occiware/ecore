@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -91,8 +91,8 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Name()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='The name of this Container instance'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getName();
@@ -119,7 +119,7 @@ public interface Container extends Compute {
 	 * @see #setContainerid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Containerid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The ID of this Container instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getContainerid();
@@ -146,7 +146,7 @@ public interface Container extends Compute {
 	 * @see #setImage(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The image of this Container instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage();
@@ -173,7 +173,7 @@ public interface Container extends Compute {
 	 * @see #setBuild(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Build()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The build directory of this Container instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBuild();
@@ -200,7 +200,7 @@ public interface Container extends Compute {
 	 * @see #setCommand(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Command()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Override the default command in Dockerfile'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCommand();
@@ -227,7 +227,7 @@ public interface Container extends Compute {
 	 * @see #setPorts(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ports()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The ports of this Container instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPorts();
@@ -254,7 +254,7 @@ public interface Container extends Compute {
 	 * @see #setExpose(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Expose()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The exposed ports of this Container instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getExpose();
@@ -281,7 +281,7 @@ public interface Container extends Compute {
 	 * @see #setVolumes(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Volumes()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The list of volumes'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVolumes();
@@ -308,7 +308,7 @@ public interface Container extends Compute {
 	 * @see #setEnvironment(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Environment()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Environment variables'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -362,7 +362,7 @@ public interface Container extends Compute {
 	 * @see #setNet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Net()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='\'bridge\',  \'none\', \'container:[name or id]\', or \'host\''"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNet();
@@ -389,7 +389,7 @@ public interface Container extends Compute {
 	 * @see #setDns(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Custom DNS servers'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDns();
@@ -416,7 +416,7 @@ public interface Container extends Compute {
 	 * @see #setDns_search(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Dns_search()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Custom DNS search domains'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDns_search();
@@ -443,7 +443,7 @@ public interface Container extends Compute {
 	 * @see #setCap_add(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_add()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Add container capabilities'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCap_add();
@@ -470,7 +470,7 @@ public interface Container extends Compute {
 	 * @see #setCap_drop(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cap_drop()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Drop container capabilities'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCap_drop();
@@ -497,7 +497,7 @@ public interface Container extends Compute {
 	 * @see #setWorking_dir(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Working_dir()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Working directory'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getWorking_dir();
@@ -524,7 +524,7 @@ public interface Container extends Compute {
 	 * @see #setEntrypoint(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Entrypoint()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Entry point'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEntrypoint();
@@ -632,7 +632,7 @@ public interface Container extends Compute {
 	 * @see #setMemory_swap(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_swap()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Memory swap limit'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_swap();
@@ -714,7 +714,7 @@ public interface Container extends Compute {
 	 * @see #setStdin_open(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Stdin_open()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description=''"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isStdin_open();
@@ -741,7 +741,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Interactive</em>' attribute.
 	 * @see #setInteractive(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Interactive()
-	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean" required="true"
+	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
 	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
@@ -798,7 +798,7 @@ public interface Container extends Compute {
 	 * @see #setCpu_shares(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_shares()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='CPU shares for this Docker container'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu_shares();
@@ -825,7 +825,7 @@ public interface Container extends Compute {
 	 * @see #setPid(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Pid()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='\'\' or \'host\''"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPid();
@@ -852,7 +852,7 @@ public interface Container extends Compute {
 	 * @see #setIpc(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Ipc()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='\'\', \'host\' or \'container:[name:id]\''"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getIpc();
@@ -1041,7 +1041,7 @@ public interface Container extends Compute {
 	 * @see #setCpuset(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpuset()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description=''"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCpuset();
@@ -1069,7 +1069,7 @@ public interface Container extends Compute {
 	 * @see #setPublish_all(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Publish_all()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Publish all exposed ports to random ports on the host interfaces'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isPublish_all();
@@ -1097,7 +1097,7 @@ public interface Container extends Compute {
 	 * @see #setRead_only(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Read_only()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Mount the container\'s root filesystem as read only'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isRead_only();
@@ -1125,7 +1125,7 @@ public interface Container extends Compute {
 	 * @see #setMonitored(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Monitored()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='This attribut allow us to monitor the container'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isMonitored();
@@ -1152,7 +1152,7 @@ public interface Container extends Compute {
 	 * @see #setCpu_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_used()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='CPU consumed by the conatiner'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu_used();
@@ -1179,7 +1179,7 @@ public interface Container extends Compute {
 	 * @see #setMemory_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_used()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Memory consumed by the container'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_used();
@@ -1207,7 +1207,7 @@ public interface Container extends Compute {
 	 * @see #setCpu_percent(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_percent()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The percentage of CPU used.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCpu_percent();
@@ -1235,7 +1235,7 @@ public interface Container extends Compute {
 	 * @see #setMemory_percent(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_percent()
 	 * @model default="0" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The percentage of Memory used.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMemory_percent();
@@ -1262,7 +1262,7 @@ public interface Container extends Compute {
 	 * @see #setDisk_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Disk_used()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The disk used.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_used();
@@ -1289,7 +1289,7 @@ public interface Container extends Compute {
 	 * @see #setDisk_percent(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Disk_percent()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The percentage of disk used.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDisk_percent();
@@ -1316,7 +1316,7 @@ public interface Container extends Compute {
 	 * @see #setBandwidth_used(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Bandwidth_used()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The bandwidth used by the container.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getBandwidth_used();
@@ -1343,7 +1343,7 @@ public interface Container extends Compute {
 	 * @see #setBandwidth_percent(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Bandwidth_percent()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The percentage of bandwith used.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBandwidth_percent();
@@ -1371,7 +1371,7 @@ public interface Container extends Compute {
 	 * @see #setMonitoring_interval(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Monitoring_interval()
 	 * @model default="1000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The time interval in which the metrics are retrieved from container. This value is in milliseconds.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMonitoring_interval();
@@ -1398,7 +1398,7 @@ public interface Container extends Compute {
 	 * @see #setCpu_max_value(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Cpu_max_value()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The CPU max value espression used by the Gauge.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu_max_value();
@@ -1425,7 +1425,7 @@ public interface Container extends Compute {
 	 * @see #setMemory_max_value(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Memory_max_value()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The memory max value expression used by the gauge.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_max_value();
@@ -1453,7 +1453,7 @@ public interface Container extends Compute {
 	 * @see #setCore_max(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getContainer_Core_max()
 	 * @model default="1" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The maximum number core availbale on the machine. This value is setting dynamically.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCore_max();
@@ -1519,7 +1519,7 @@ public interface Container extends Compute {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model signalDataType="org.occiware.clouddesigner.occi.String" signalRequired="true"
+	 * @model signalDataType="org.occiware.clouddesigner.occi.String"
 	 *        signalAnnotation="OCCIE2Ecore description='null'"
 	 *        annotation="OCCIE2Ecore title='null'"
 	 * @generated

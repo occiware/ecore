@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -51,8 +51,8 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Username()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='vSphere Username'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -78,8 +78,8 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Password()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='vSphere Password'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -105,8 +105,8 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @return the value of the '<em>Boot2docker url</em>' attribute.
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Boot2docker_url()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='URL for boot2docker image'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -133,7 +133,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setCompute_ip(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Compute_ip()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Compute host IP where the Docker VM will be instantiated'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getCompute_ip();
@@ -161,7 +161,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setCpu_count(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Cpu_count()
 	 * @model default="2" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='CPU number for Docker VM'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getCpu_count();
@@ -188,7 +188,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDatacenter(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Datacenter()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDatacenter();
@@ -215,7 +215,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDatastore(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Datastore()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Datastore for Docker VM'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDatastore();
@@ -243,7 +243,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of disk for Docker VM (in MB)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -271,7 +271,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Memory_size()
 	 * @model default="2048" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of memory for Docker VM (in MB) '"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_size();
@@ -298,7 +298,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setNetwork(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Network()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Network where the Docker VM will be attached'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNetwork();
@@ -325,7 +325,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setPool(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Pool()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Resource pool for Docker VM'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPool();
@@ -352,7 +352,7 @@ public interface Machine_VMware_vSphere extends Machine {
 	 * @see #setVcenter(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_vSphere_Vcenter()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description=' IP/hostname for vCenter (or ESXi if connecting directly to a single host)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVcenter();

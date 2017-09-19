@@ -11,13 +11,12 @@
  Contributors:
  - William Piers <william.piers@obeo.fr>
  - Philippe Merle <philippe.merle@inria.fr>
- - Fawaz Paraïso <fawaz.paraiso@inria.fr>
 -->
 
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated Docker -->
+      <!-- @generated docker -->
       <factory
             uri="http://occiware.org/occi/docker/ecore"
             class="org.occiware.clouddesigner.occi.docker.provider.DockerItemProviderAdapterFactory"

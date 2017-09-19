@@ -1,25 +1,26 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker.impl;
-
-import static org.occiware.clouddesigner.occi.docker.DockerPackage.CONTAINER;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.occiware.clouddesigner.occi.OCCIPackage;
+
 import org.occiware.clouddesigner.occi.docker.Cluster;
 import org.occiware.clouddesigner.occi.docker.Contains;
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
@@ -46,6 +47,7 @@ import org.occiware.clouddesigner.occi.docker.Network;
 import org.occiware.clouddesigner.occi.docker.NetworkLink;
 import org.occiware.clouddesigner.occi.docker.Volume;
 import org.occiware.clouddesigner.occi.docker.Volumesfrom;
+
 import org.occiware.clouddesigner.occi.infrastructure.InfrastructurePackage;
 
 /**
@@ -214,14 +216,14 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass clusterEClass = null;
+	private EClass machine_Grid5000EClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass machine_Grid5000EClass = null;
+	private EClass clusterEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1829,6 +1831,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMachine_Microsoft_Hyper_V_Virtual_switch() {
+		return (EAttribute)machine_Microsoft_Hyper_VEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getMachine_Microsoft_Hyper_V_Boot2docker_url() {
 		return (EAttribute)machine_Microsoft_Hyper_VEClass.getEStructuralFeatures().get(1);
 	}
@@ -1858,15 +1869,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getMachine_Microsoft_Hyper_V_Vlan_id() {
 		return (EAttribute)machine_Microsoft_Hyper_VEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getMachine_Microsoft_Hyper_V_Virtual_switch() {
-		return (EAttribute)machine_Microsoft_Hyper_VEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2711,24 +2713,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCluster() {
-		return clusterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCluster_Name() {
-		return (EAttribute)clusterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getMachine_Grid5000() {
 		return machine_Grid5000EClass;
 	}
@@ -2821,6 +2805,24 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 */
 	public EAttribute getMachine_Grid5000_Host_to_provision() {
 		return (EAttribute)machine_Grid5000EClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCluster() {
+		return clusterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCluster_Name() {
+		return (EAttribute)clusterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -3228,7 +3230,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(containerEClass, org.occiware.clouddesigner.occi.docker.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Name(), theOCCIPackage.getString(), "name", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Containerid(), theOCCIPackage.getString(), "containerid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Image(), theOCCIPackage.getString(), "image", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Build(), theOCCIPackage.getString(), "build", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3252,7 +3254,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Privileged(), theOCCIPackage.getBoolean(), "privileged", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Restart(), theOCCIPackage.getString(), "restart", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Stdin_open(), theOCCIPackage.getBoolean(), "stdin_open", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContainer_Interactive(), theOCCIPackage.getBoolean(), "interactive", "false", 1, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Interactive(), theOCCIPackage.getBoolean(), "interactive", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Tty(), theOCCIPackage.getBoolean(), "tty", "false", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Cpu_shares(), theOCCIPackage.getNumber(), "cpu_shares", "0", 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Pid(), theOCCIPackage.getString(), "pid", null, 0, 1, org.occiware.clouddesigner.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3293,7 +3295,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEOperation(getContainer__Unpause(), null, "unpause", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = initEOperation(getContainer__Kill__String(), null, "kill", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theOCCIPackage.getString(), "signal", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theOCCIPackage.getString(), "signal", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLink_Alias(), theOCCIPackage.getString(), "alias", null, 0, 1, Link.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3306,7 +3308,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEClass(containsEClass, Contains.class, "Contains", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(machineEClass, Machine.class, "Machine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 1, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Engine_install_url(), theOCCIPackage.getString(), "engine_install_url", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Engine_opt(), theOCCIPackage.getString(), "engine_opt", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Engine_insecure_registry(), theOCCIPackage.getString(), "engine_insecure_registry", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3352,26 +3354,26 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		initEClass(machine_GenericEClass, Machine_Generic.class, "Machine_Generic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Generic_Engine_port(), theOCCIPackage.getNumber(), "engine_port", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Generic_Ip_address(), theOCCIPackage.getString(), "ip_address", null, 1, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Generic_Ip_address(), theOCCIPackage.getString(), "ip_address", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Generic_Ssh_key(), theOCCIPackage.getString(), "ssh_key", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Generic_Ssh_user(), theOCCIPackage.getString(), "ssh_user", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Generic_Ssh_port(), theOCCIPackage.getNumber(), "ssh_port", null, 0, 1, Machine_Generic.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Amazon_EC2EClass, Machine_Amazon_EC2.class, "Machine_Amazon_EC2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Amazon_EC2_Access_key(), theOCCIPackage.getString(), "access_key", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Amazon_EC2_Access_key(), theOCCIPackage.getString(), "access_key", null, 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Ami(), theOCCIPackage.getString(), "ami", "ami-4ae27e22", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Instance_type(), theOCCIPackage.getString(), "instance_type", "t2.micro", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Region(), theOCCIPackage.getString(), "region", "us-east-1", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Root_size(), theOCCIPackage.getNumber(), "root_size", "16", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Amazon_EC2_Secret_key(), theOCCIPackage.getString(), "secret_key", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Amazon_EC2_Secret_key(), theOCCIPackage.getString(), "secret_key", null, 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Security_group(), theOCCIPackage.getString(), "security_group", "docker-machine", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Session_token(), theOCCIPackage.getString(), "session_token", null, 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Subnet_id(), theOCCIPackage.getString(), "subnet_id", null, 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Amazon_EC2_Vpc_id(), theOCCIPackage.getString(), "vpc_id", null, 1, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Amazon_EC2_Vpc_id(), theOCCIPackage.getString(), "vpc_id", null, 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Amazon_EC2_Zone(), theOCCIPackage.getString(), "zone", "a", 0, 1, Machine_Amazon_EC2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Digital_OceanEClass, Machine_Digital_Ocean.class, "Machine_Digital_Ocean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Digital_Ocean_Access_token(), theOCCIPackage.getString(), "access_token", null, 1, 1, Machine_Digital_Ocean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Digital_Ocean_Access_token(), theOCCIPackage.getString(), "access_token", null, 0, 1, Machine_Digital_Ocean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Digital_Ocean_Image(), theOCCIPackage.getString(), "image", "docker", 0, 1, Machine_Digital_Ocean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Digital_Ocean_Region(), theOCCIPackage.getString(), "region", "nyc3", 0, 1, Machine_Digital_Ocean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Digital_Ocean_Size(), theOCCIPackage.getString(), "size", "512mb", 0, 1, Machine_Digital_Ocean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3381,15 +3383,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Google_Compute_Engine_Machine_type(), theOCCIPackage.getString(), "machine_type", "f1-micro", 0, 1, Machine_Google_Compute_Engine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Google_Compute_Engine_Username(), theOCCIPackage.getString(), "username", "docker-user", 0, 1, Machine_Google_Compute_Engine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Google_Compute_Engine_Instance_name(), theOCCIPackage.getString(), "instance_name", "docker-machine", 0, 1, Machine_Google_Compute_Engine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Google_Compute_Engine_Project(), theOCCIPackage.getString(), "project", null, 1, 1, Machine_Google_Compute_Engine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Google_Compute_Engine_Project(), theOCCIPackage.getString(), "project", null, 0, 1, Machine_Google_Compute_Engine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_IBM_SoftLayerEClass, Machine_IBM_SoftLayer.class, "Machine_IBM_SoftLayer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_IBM_SoftLayer_Api_endpoint(), theOCCIPackage.getString(), "api_endpoint", "api.softlayer.com/rest/v3", 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_IBM_SoftLayer_User(), theOCCIPackage.getString(), "user", null, 1, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_IBM_SoftLayer_Api_key(), theOCCIPackage.getString(), "api_key", null, 1, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_IBM_SoftLayer_User(), theOCCIPackage.getString(), "user", null, 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_IBM_SoftLayer_Api_key(), theOCCIPackage.getString(), "api_key", null, 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_IBM_SoftLayer_Cpu(), theOCCIPackage.getNumber(), "cpu", null, 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_IBM_SoftLayer_Disk_size(), theOCCIPackage.getNumber(), "disk_size", null, 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_IBM_SoftLayer_Domain(), theOCCIPackage.getString(), "domain", null, 1, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_IBM_SoftLayer_Domain(), theOCCIPackage.getString(), "domain", null, 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_IBM_SoftLayer_Hourly_billing(), theOCCIPackage.getBoolean(), "hourly_billing", "false", 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_IBM_SoftLayer_Image(), theOCCIPackage.getString(), "image", "UBUNTU_LATEST", 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_IBM_SoftLayer_Local_disk(), theOCCIPackage.getBoolean(), "local_disk", "false", 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3399,8 +3401,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_IBM_SoftLayer_Private_vlan_id(), theOCCIPackage.getString(), "private_vlan_id", "0", 0, 1, Machine_IBM_SoftLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Microsoft_AzureEClass, Machine_Microsoft_Azure.class, "Machine_Microsoft_Azure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Microsoft_Azure_Subscription_id(), theOCCIPackage.getString(), "subscription_id", null, 1, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Microsoft_Azure_Subscription_cert(), theOCCIPackage.getString(), "subscription_cert", null, 1, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Microsoft_Azure_Subscription_id(), theOCCIPackage.getString(), "subscription_id", null, 0, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Microsoft_Azure_Subscription_cert(), theOCCIPackage.getString(), "subscription_cert", null, 0, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Microsoft_Azure_Environment(), theOCCIPackage.getString(), "environment", "AzurePublicCloud", 0, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Microsoft_Azure_Location(), theOCCIPackage.getString(), "location", null, 0, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Microsoft_Azure_Resource_group(), theOCCIPackage.getString(), "resource_group", "docker-machine", 0, 1, Machine_Microsoft_Azure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3426,11 +3428,11 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Microsoft_Hyper_V_Vlan_id(), theOCCIPackage.getString(), "vlan_id", null, 0, 1, Machine_Microsoft_Hyper_V.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_OpenStackEClass, Machine_OpenStack.class, "Machine_OpenStack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_OpenStack_Flavor_id(), theOCCIPackage.getString(), "flavor_id", null, 1, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_OpenStack_Flavor_id(), theOCCIPackage.getString(), "flavor_id", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_OpenStack_Flavor_name(), theOCCIPackage.getString(), "flavor_name", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_OpenStack_Image_id(), theOCCIPackage.getString(), "image_id", null, 1, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_OpenStack_Image_id(), theOCCIPackage.getString(), "image_id", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_OpenStack_Image_name(), theOCCIPackage.getString(), "image_name", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_OpenStack_Auth_url(), theOCCIPackage.getString(), "auth_url", null, 1, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_OpenStack_Auth_url(), theOCCIPackage.getString(), "auth_url", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_OpenStack_Username(), theOCCIPackage.getString(), "username", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_OpenStack_Password(), theOCCIPackage.getString(), "password", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_OpenStack_Tenant_name(), theOCCIPackage.getString(), "tenant_name", null, 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3453,9 +3455,9 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_OpenStack_Ssh_user(), theOCCIPackage.getString(), "ssh_user", "root", 0, 1, Machine_OpenStack.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_RackspaceEClass, Machine_Rackspace.class, "Machine_Rackspace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Rackspace_Username(), theOCCIPackage.getString(), "username", null, 1, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Rackspace_Api_key(), theOCCIPackage.getString(), "api_key", null, 1, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Rackspace_Region(), theOCCIPackage.getString(), "region", null, 1, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Rackspace_Username(), theOCCIPackage.getString(), "username", null, 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Rackspace_Api_key(), theOCCIPackage.getString(), "api_key", null, 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Rackspace_Region(), theOCCIPackage.getString(), "region", null, 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Rackspace_Endpoint_type(), theOCCIPackage.getString(), "endpoint_type", "publicURL", 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Rackspace_Image_id(), theOCCIPackage.getString(), "image_id", "59a3fadd-93e7-4674-886a-64883e17115f", 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Rackspace_Flavor_id(), theOCCIPackage.getString(), "flavor_id", "general1-1", 0, 1, Machine_Rackspace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3483,8 +3485,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_VMware_Fusion_No_share(), theOCCIPackage.getBoolean(), "no_share", "false", 0, 1, Machine_VMware_Fusion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_VMware_vCloud_AirEClass, Machine_VMware_vCloud_Air.class, "Machine_VMware_vCloud_Air", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_VMware_vCloud_Air_Username(), theOCCIPackage.getString(), "username", null, 1, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_VMware_vCloud_Air_Password(), theOCCIPackage.getString(), "password", null, 1, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VMware_vCloud_Air_Username(), theOCCIPackage.getString(), "username", null, 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VMware_vCloud_Air_Password(), theOCCIPackage.getString(), "password", null, 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vCloud_Air_Catalog(), theOCCIPackage.getString(), "catalog", "Public Catalog", 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vCloud_Air_Catalogitem(), theOCCIPackage.getString(), "catalogitem", "Ubuntu Server 12.04 LTS (amd64 20140927)", 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vCloud_Air_Computeid(), theOCCIPackage.getString(), "computeid", null, 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3500,9 +3502,9 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_VMware_vCloud_Air_Vdcid(), theOCCIPackage.getString(), "vdcid", null, 0, 1, Machine_VMware_vCloud_Air.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_VMware_vSphereEClass, Machine_VMware_vSphere.class, "Machine_VMware_vSphere", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_VMware_vSphere_Username(), theOCCIPackage.getString(), "username", null, 1, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_VMware_vSphere_Password(), theOCCIPackage.getString(), "password", null, 1, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_VMware_vSphere_Boot2docker_url(), theOCCIPackage.getString(), "boot2docker_url", null, 1, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VMware_vSphere_Username(), theOCCIPackage.getString(), "username", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VMware_vSphere_Password(), theOCCIPackage.getString(), "password", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_VMware_vSphere_Boot2docker_url(), theOCCIPackage.getString(), "boot2docker_url", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vSphere_Compute_ip(), theOCCIPackage.getString(), "compute_ip", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vSphere_Cpu_count(), theOCCIPackage.getNumber(), "cpu_count", "2", 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_VMware_vSphere_Datacenter(), theOCCIPackage.getString(), "datacenter", null, 0, 1, Machine_VMware_vSphere.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3515,8 +3517,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 		initEClass(machine_ExoscaleEClass, Machine_Exoscale.class, "Machine_Exoscale", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMachine_Exoscale_Url(), theOCCIPackage.getString(), "url", "https://api.exoscale.ch/compute", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Exoscale_Api_key(), theOCCIPackage.getString(), "api_key", null, 1, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Exoscale_Api_secret_key(), theOCCIPackage.getString(), "api_secret_key", null, 1, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Api_key(), theOCCIPackage.getString(), "api_key", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Exoscale_Api_secret_key(), theOCCIPackage.getString(), "api_secret_key", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Exoscale_Instance_profile(), theOCCIPackage.getString(), "instance_profile", "small", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Exoscale_Image(), theOCCIPackage.getString(), "image", "ubuntu-16.04", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Exoscale_Security_group(), theOCCIPackage.getString(), "security_group", null, 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3526,16 +3528,16 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_Exoscale_Affinity_group(), theOCCIPackage.getString(), "affinity_group", "docker-machine", 0, 1, Machine_Exoscale.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(machine_Grid5000EClass, Machine_Grid5000.class, "Machine_Grid5000", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMachine_Grid5000_Username(), theOCCIPackage.getString(), "username", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Grid5000_Password(), theOCCIPackage.getString(), "password", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Grid5000_Site(), theOCCIPackage.getString(), "site", null, 1, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Username(), theOCCIPackage.getString(), "username", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Password(), theOCCIPackage.getString(), "password", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Site(), theOCCIPackage.getString(), "site", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Walltime(), theOCCIPackage.getString(), "walltime", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Ssh_private_key(), theOCCIPackage.getString(), "ssh_private_key", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Ssh_public_key(), theOCCIPackage.getString(), "ssh_public_key", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Image(), theOCCIPackage.getString(), "image", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Resource_properties(), theOCCIPackage.getString(), "resource_properties", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_Grid5000_Use_job_reservation(), theOCCIPackage.getString(), "use_job_reservation", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMachine_Grid5000_Host_to_provision(), ecorePackage.getEString(), "host_to_provision", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMachine_Grid5000_Host_to_provision(), theOCCIPackage.getString(), "host_to_provision", null, 0, 1, Machine_Grid5000.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(clusterEClass, Cluster.class, "Cluster", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCluster_Name(), theOCCIPackage.getString(), "name", null, 0, 1, Cluster.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3619,55 +3621,55 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "The name of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Containerid(), 
 		   source, 
 		   new String[] {
-			 "description", "The ID of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "The image of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Build(), 
 		   source, 
 		   new String[] {
-			 "description", "The build directory of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Command(), 
 		   source, 
 		   new String[] {
-			 "description", "Override the default command in Dockerfile"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Ports(), 
 		   source, 
 		   new String[] {
-			 "description", "The ports of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Expose(), 
 		   source, 
 		   new String[] {
-			 "description", "The exposed ports of this Container instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Volumes(), 
 		   source, 
 		   new String[] {
-			 "description", "The list of volumes"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Environment(), 
 		   source, 
 		   new String[] {
-			 "description", "Environment variables"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Env_file(), 
@@ -3679,43 +3681,43 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Net(), 
 		   source, 
 		   new String[] {
-			 "description", "\'bridge\',  \'none\', \'container:[name or id]\', or \'host\'"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Dns(), 
 		   source, 
 		   new String[] {
-			 "description", "Custom DNS servers"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Dns_search(), 
 		   source, 
 		   new String[] {
-			 "description", "Custom DNS search domains"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Cap_add(), 
 		   source, 
 		   new String[] {
-			 "description", "Add container capabilities"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Cap_drop(), 
 		   source, 
 		   new String[] {
-			 "description", "Drop container capabilities"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Working_dir(), 
 		   source, 
 		   new String[] {
-			 "description", "Working directory"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Entrypoint(), 
 		   source, 
 		   new String[] {
-			 "description", "Entry point"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_User(), 
@@ -3739,7 +3741,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Memory_swap(), 
 		   source, 
 		   new String[] {
-			 "description", "Memory swap limit"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Privileged(), 
@@ -3757,7 +3759,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Stdin_open(), 
 		   source, 
 		   new String[] {
-			 "description", ""
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Interactive(), 
@@ -3775,19 +3777,19 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Cpu_shares(), 
 		   source, 
 		   new String[] {
-			 "description", "CPU shares for this Docker container"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Pid(), 
 		   source, 
 		   new String[] {
-			 "description", "\'\' or \'host\'"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Ipc(), 
 		   source, 
 		   new String[] {
-			 "description", "\'\', \'host\' or \'container:[name:id]\'"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Add_host(), 
@@ -3829,97 +3831,97 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getContainer_Cpuset(), 
 		   source, 
 		   new String[] {
-			 "description", ""
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Publish_all(), 
 		   source, 
 		   new String[] {
-			 "description", "Publish all exposed ports to random ports on the host interfaces"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Read_only(), 
 		   source, 
 		   new String[] {
-			 "description", "Mount the container\'s root filesystem as read only"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Monitored(), 
 		   source, 
 		   new String[] {
-			 "description", "This attribut allow us to monitor the container"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Cpu_used(), 
 		   source, 
 		   new String[] {
-			 "description", "CPU consumed by the conatiner"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Memory_used(), 
 		   source, 
 		   new String[] {
-			 "description", "Memory consumed by the container"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Cpu_percent(), 
 		   source, 
 		   new String[] {
-			 "description", "The percentage of CPU used."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Memory_percent(), 
 		   source, 
 		   new String[] {
-			 "description", "The percentage of Memory used."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Disk_used(), 
 		   source, 
 		   new String[] {
-			 "description", "The disk used."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Disk_percent(), 
 		   source, 
 		   new String[] {
-			 "description", "The percentage of disk used."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Bandwidth_used(), 
 		   source, 
 		   new String[] {
-			 "description", "The bandwidth used by the container."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Bandwidth_percent(), 
 		   source, 
 		   new String[] {
-			 "description", "The percentage of bandwith used."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Monitoring_interval(), 
 		   source, 
 		   new String[] {
-			 "description", "The time interval in which the metrics are retrieved from container. This value is in milliseconds."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Cpu_max_value(), 
 		   source, 
 		   new String[] {
-			 "description", "The CPU max value espression used by the Gauge."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Memory_max_value(), 
 		   source, 
 		   new String[] {
-			 "description", "The memory max value expression used by the gauge."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getContainer_Core_max(), 
 		   source, 
 		   new String[] {
-			 "description", "The maximum number core availbale on the machine. This value is setting dynamically."
+			 "description", null
 		   });	
 		addAnnotation
 		  (linkEClass, 
@@ -3931,7 +3933,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getLink_Alias(), 
 		   source, 
 		   new String[] {
-			 "description", "The alias of this Link instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (networkLinkEClass, 
@@ -3949,7 +3951,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getVolumesfrom_Mode(), 
 		   source, 
 		   new String[] {
-			 "description", "The mode of this VolumesFrom instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (containsEClass, 
@@ -3973,103 +3975,103 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Engine_install_url(), 
 		   source, 
 		   new String[] {
-			 "description", "Custom URL to use for engine installation [$MACHINE_DOCKER_INSTALL_URL]"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_opt(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify arbitrary flags to include with the created engine in the form flag=value"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_insecure_registry(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify insecure registries to allow with the created engine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_registry_mirror(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify registry mirrors to use [$ENGINE_REGISTRY_MIRROR]"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_label(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify labels for the created engine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_storage_driver(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify a storage driver to use with the engine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Engine_env(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify environment variables to set in the engine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm(), 
 		   source, 
 		   new String[] {
-			 "description", "Configure Machine with Swarm"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_image(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify Docker image to use for Swarm [$MACHINE_SWARM_IMAGE]"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_master(), 
 		   source, 
 		   new String[] {
-			 "description", "Configure Machine to be a Swarm master"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_discovery(), 
 		   source, 
 		   new String[] {
-			 "description", "Discovery service to use with Swarm"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_strategy(), 
 		   source, 
 		   new String[] {
-			 "description", "Define a default scheduling strategy for Swarm"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_opt(), 
 		   source, 
 		   new String[] {
-			 "description", "Define arbitrary flags for swarm"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_host(), 
 		   source, 
 		   new String[] {
-			 "description", "ip/socket to listen on for Swarm master"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_addr(), 
 		   source, 
 		   new String[] {
-			 "description", "addr to advertise for Swarm (default: detect and use the machine IP)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Swarm_experimental(), 
 		   source, 
 		   new String[] {
-			 "description", "Enable Swarm experimental features"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Tls_san(), 
 		   source, 
 		   new String[] {
-			 "description", "Support extra SANs for TLS certs"
+			 "description", null
 		   });	
 		addAnnotation
 		  (volumeEClass, 
@@ -4081,55 +4083,55 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getVolume_Driver(), 
 		   source, 
 		   new String[] {
-			 "description", " Specify volume driver name (default \"local\")"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Labels(), 
 		   source, 
 		   new String[] {
-			 "description", "Set metadata for a volume (default [])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Options(), 
 		   source, 
 		   new String[] {
-			 "description", "Set driver specific options (default map[])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Source(), 
 		   source, 
 		   new String[] {
-			 "description", "The volume Mountpoint ex. the /host/directory"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Destination(), 
 		   source, 
 		   new String[] {
-			 "description", "The volume name inside the container ex. /container/path"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Mode(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify volume driver name"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Rw(), 
 		   source, 
 		   new String[] {
-			 "description", "The volume Read/Write access"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Propagation(), 
 		   source, 
 		   new String[] {
-			 "description", "The volume propagation"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getVolume_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "The volume name."
+			 "description", null
 		   });	
 		addAnnotation
 		  (networkEClass, 
@@ -4141,73 +4143,73 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getNetwork_NetworkId(), 
 		   source, 
 		   new String[] {
-			 "description", "The network ID retreived when the creation is done"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "The network name"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Aux_address(), 
 		   source, 
 		   new String[] {
-			 "description", "Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Driver(), 
 		   source, 
 		   new String[] {
-			 "description", "Driver to manage the Network (default \"bridge\")"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Gateway(), 
 		   source, 
 		   new String[] {
-			 "description", "IPv4 or IPv6 Gateway for the master subnet (default [])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Internal(), 
 		   source, 
 		   new String[] {
-			 "description", "Restrict external access to the network"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Ip_range(), 
 		   source, 
 		   new String[] {
-			 "description", "Allocate container ip from a sub-range (default [])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Ipam_driver(), 
 		   source, 
 		   new String[] {
-			 "description", "IP Address Management Driver (default \"default\")"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Ipam_opt(), 
 		   source, 
 		   new String[] {
-			 "description", "Set IPAM driver specific options (default map[])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Ipv6(), 
 		   source, 
 		   new String[] {
-			 "description", "Enable IPv6 networking"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Opt(), 
 		   source, 
 		   new String[] {
-			 "description", "Set driver specific options (default map[])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getNetwork_Subnet(), 
 		   source, 
 		   new String[] {
-			 "description", "Subnet in CIDR format that represents a network segment (default [])"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_GenericEClass, 
@@ -4219,31 +4221,31 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Generic_Engine_port(), 
 		   source, 
 		   new String[] {
-			 "description", "Port to use for Docker Daemon (Note: This flag will not work with boot2docker)."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Generic_Ip_address(), 
 		   source, 
 		   new String[] {
-			 "description", " required IP Address of host."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Generic_Ssh_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Path to the SSH user private key."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Generic_Ssh_user(), 
 		   source, 
 		   new String[] {
-			 "description", "SSH username used to connect."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Generic_Ssh_port(), 
 		   source, 
 		   new String[] {
-			 "description", "Port to use for SSH."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Amazon_EC2EClass, 
@@ -4255,67 +4257,67 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Amazon_EC2_Access_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Your access key id for the Amazon Web Services API"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Ami(), 
 		   source, 
 		   new String[] {
-			 "description", "The AMI ID of the instance to use"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Instance_type(), 
 		   source, 
 		   new String[] {
-			 "description", "The instance type to run"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Region(), 
 		   source, 
 		   new String[] {
-			 "description", "The region to use when launching the instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Root_size(), 
 		   source, 
 		   new String[] {
-			 "description", "The root disk size of the instance (in GB)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Secret_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Your secret access key for the Amazon Web Services API"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Security_group(), 
 		   source, 
 		   new String[] {
-			 "description", "AWS VPC security group name"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Session_token(), 
 		   source, 
 		   new String[] {
-			 "description", "Your session token for the Amazon Web Services API"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Subnet_id(), 
 		   source, 
 		   new String[] {
-			 "description", "AWS VPC subnet id"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Vpc_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Your VPC ID to launch the instance in"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Amazon_EC2_Zone(), 
 		   source, 
 		   new String[] {
-			 "description", "The AWS zone launch the instance in (i.e. one of a,b,c,d,e)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Digital_OceanEClass, 
@@ -4327,25 +4329,25 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Digital_Ocean_Access_token(), 
 		   source, 
 		   new String[] {
-			 "description", "Your personal access token for the Digital Ocean API"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Digital_Ocean_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "The name of the Digital Ocean image to use"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Digital_Ocean_Region(), 
 		   source, 
 		   new String[] {
-			 "description", "The region to create the droplet in"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Digital_Ocean_Size(), 
 		   source, 
 		   new String[] {
-			 "description", "The size of the Digital Ocean driver (larger than default options are of the form 2gb)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Google_Compute_EngineEClass, 
@@ -4357,31 +4359,31 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Google_Compute_Engine_Zone(), 
 		   source, 
 		   new String[] {
-			 "description", "The zone to launch the instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Google_Compute_Engine_Machine_type(), 
 		   source, 
 		   new String[] {
-			 "description", "The type of instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Google_Compute_Engine_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "The username to use for the instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Google_Compute_Engine_Instance_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The name of the instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Google_Compute_Engine_Project(), 
 		   source, 
 		   new String[] {
-			 "description", "The name of your project to use when launching the instance"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_IBM_SoftLayerEClass, 
@@ -4393,79 +4395,79 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_IBM_SoftLayer_Api_endpoint(), 
 		   source, 
 		   new String[] {
-			 "description", "Change softlayer API endpoint"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_User(), 
 		   source, 
 		   new String[] {
-			 "description", "username for your softlayer account, api key needs to match this user"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Api_key(), 
 		   source, 
 		   new String[] {
-			 "description", "API key for your user account"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Cpu(), 
 		   source, 
 		   new String[] {
-			 "description", "Number of CPU\'s for the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Disk_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of the disk in MB. 0 sets the softlayer default"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Domain(), 
 		   source, 
 		   new String[] {
-			 "description", "domain name for the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Hourly_billing(), 
 		   source, 
 		   new String[] {
-			 "description", "Sets the hourly billing flag (default), otherwise uses monthly billing"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "OS Image to use"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Local_disk(), 
 		   source, 
 		   new String[] {
-			 "description", "Use local machine disk instead of softlayer SAN"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Private_net_only(), 
 		   source, 
 		   new String[] {
-			 "description", "Disable public networking"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Region(), 
 		   source, 
 		   new String[] {
-			 "description", "softlayer region"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Public_vlan_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Your public VLAN ID."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_IBM_SoftLayer_Private_vlan_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Your private VLAN ID."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Microsoft_AzureEClass, 
@@ -4477,109 +4479,109 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Microsoft_Azure_Subscription_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Your Azure subscription ID (A GUID like d255d8d7-5af0-4f5c-8a3e-1545044b861e)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Subscription_cert(), 
 		   source, 
 		   new String[] {
-			 "description", "Your Azure subscription cert"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Environment(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure environment (e.g. AzurePublicCloud, AzureChinaCloud)."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Location(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure region to create the virtual machine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Resource_group(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure Resource Group name to create the resources in."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size for Azure Virtual Machine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Ssh_user(), 
 		   source, 
 		   new String[] {
-			 "description", "Username for SSH login."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Vnet(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure Virtual Network name to connect the virtual machine. To specify a Virtual Network from another resource group, use resourcegroup:vnet-name format."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Subnet(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure Subnet Name to be used within the Virtual Network."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Subnet_prefix(), 
 		   source, 
 		   new String[] {
-			 "description", "Private CIDR block. Used to create subnet if it does not exist. Must match in the case that the subnet does exist."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Availability_set(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure Availability Set to place the virtual machine into."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Open_port(), 
 		   source, 
 		   new String[] {
-			 "description", " Make additional port number(s) accessible from the Internet"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Private_ip_address(), 
 		   source, 
 		   new String[] {
-			 "description", "Specify a static private IP address for the machine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_No_public_ip(), 
 		   source, 
 		   new String[] {
-			 "description", "Do not create a public IP address for the machine (implies --azure-use-private-ip). "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Static_public_ip(), 
 		   source, 
 		   new String[] {
-			 "description", "Assign a static public IP address to the machine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Docker_port(), 
 		   source, 
 		   new String[] {
-			 "description", "Port number for Docker engine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Use_private_ip(), 
 		   source, 
 		   new String[] {
-			 "description", " Use private IP address of the machine to connect. It\u2019s useful for managing Docker machines from another machine on the same network e.g. while deploying Swarm."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Azure_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "Azure virtual machine image in the format of Publisher:Offer:Sku:Version"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Microsoft_Hyper_VEClass, 
@@ -4591,31 +4593,31 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Microsoft_Hyper_V_Virtual_switch(), 
 		   source, 
 		   new String[] {
-			 "description", "Name of the virtual switch to use."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Hyper_V_Boot2docker_url(), 
 		   source, 
 		   new String[] {
-			 "description", "The URL of the boot2docker iso. Defaults to the latest available version"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Hyper_V_Disk_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of disk for the host in MB"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Hyper_V_Static_macaddress(), 
 		   source, 
 		   new String[] {
-			 "description", "Hyper-V network adapter\u2019s static MAC address."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Microsoft_Hyper_V_Vlan_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Hyper-V network adapter\u2019s VLAN ID if any."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_OpenStackEClass, 
@@ -4627,151 +4629,151 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_OpenStack_Flavor_id(), 
 		   source, 
 		   new String[] {
-			 "description", "The flavor ID to use when creating the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Flavor_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS FLAVOR NAME"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Image_id(), 
 		   source, 
 		   new String[] {
-			 "description", "The image ID to use when creating the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Image_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS IMAGE NAME"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Auth_url(), 
 		   source, 
 		   new String[] {
-			 "description", "Keystone service base URL"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "User identifer to authenticate with"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Password(), 
 		   source, 
 		   new String[] {
-			 "description", "User password. It can be omitted if the standard environment variable OS_PASSWORD is set."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Tenant_name(), 
 		   source, 
 		   new String[] {
-			 "description", "Identify the tenant in which the machine will be created"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Tenant_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Identify the tenant in which the machine will be created"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Region(), 
 		   source, 
 		   new String[] {
-			 "description", "The region to work on. Can be omitted if there is only one region on the OpenStack"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Endpoint_type(), 
 		   source, 
 		   new String[] {
-			 "description", "Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Net_id(), 
 		   source, 
 		   new String[] {
-			 "description", "The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Net_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS NETWORK NAME"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Sec_groups(), 
 		   source, 
 		   new String[] {
-			 "description", "If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Floatingip_pool(), 
 		   source, 
 		   new String[] {
-			 "description", "The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Active_timeout(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS ACTIVE TIMEOUT"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Availability_zone(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS AVAILABILITY ZONE"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Domain_id(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS DOMAIN ID"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Domain_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS DOMAIN NAME"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Insecure(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS INSECURE"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Ip_version(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS IP VERSION"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Keypair_name(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS KEYPAIR NAME"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Private_key_file(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS PRIVATE KEY FILE"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Ssh_port(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS SSH PORT"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_OpenStack_Ssh_user(), 
 		   source, 
 		   new String[] {
-			 "description", "The OS SSH USER"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_RackspaceEClass, 
@@ -4783,55 +4785,55 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Rackspace_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace account username"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Api_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace API key"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Region(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace region name"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Endpoint_type(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace endpoint type (adminURL, internalURL or the default publicURL)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Image_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace image ID "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Flavor_id(), 
 		   source, 
 		   new String[] {
-			 "description", "Rackspace flavor ID"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Ssh_user(), 
 		   source, 
 		   new String[] {
-			 "description", "SSH user for the newly booted machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Ssh_port(), 
 		   source, 
 		   new String[] {
-			 "description", "SSH port for the newly booted machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Rackspace_Docker_install(), 
 		   source, 
 		   new String[] {
-			 "description", "Set if Docker has to be installed on the machine."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_VirtualBoxEClass, 
@@ -4843,67 +4845,67 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_VirtualBox_Boot2docker_url(), 
 		   source, 
 		   new String[] {
-			 "description", "The URL of the boot2docker image. Default to the latest available version"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Disk_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of disk for the host in MB"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Host_dns_resolver(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX HOST DNS RESOLVER\t"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Import_boot2docker_vm(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX BOOT2DOCKER IMPORT VM"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Hostonly_cidr(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX HOSTONLY CIDR"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Hostonly_nictype(), 
 		   source, 
 		   new String[] {
-			 "description", "The \tVIRTUALBOX HOSTONLY NIC TYPE"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Hostonly_nicpromisc(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX HOSTONLY NIC PROMISC"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_No_share(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX NO SHARE"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_No_dns_proxy(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX NO DNS PROXY"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_No_vtx_check(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX NO VTX CHECK"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VirtualBox_Share_folder(), 
 		   source, 
 		   new String[] {
-			 "description", "The VIRTUALBOX SHARE FOLDER"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_VMware_FusionEClass, 
@@ -4915,25 +4917,25 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_VMware_Fusion_Boot2docker_url(), 
 		   source, 
 		   new String[] {
-			 "description", "URL for boot2docker image"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_Fusion_Disk_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of disk for host VM (in MB)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_Fusion_Memory_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of memory for host VM (in MB)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_Fusion_No_share(), 
 		   source, 
 		   new String[] {
-			 "description", "Disable the mount of your home directory."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_VMware_vCloud_AirEClass, 
@@ -4945,91 +4947,91 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_VMware_vCloud_Air_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "vCloud Air Username"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Password(), 
 		   source, 
 		   new String[] {
-			 "description", "vCloud Air Password"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Catalog(), 
 		   source, 
 		   new String[] {
-			 "description", "Catalog "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Catalogitem(), 
 		   source, 
 		   new String[] {
-			 "description", "Catalog Item "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Computeid(), 
 		   source, 
 		   new String[] {
-			 "description", "Compute ID (if using Dedicated Cloud)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Cpu_count(), 
 		   source, 
 		   new String[] {
-			 "description", "VM Cpu Count"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Docker_port(), 
 		   source, 
 		   new String[] {
-			 "description", "Docker port "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Edgegateway(), 
 		   source, 
 		   new String[] {
-			 "description", "Organization Edge Gateway"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Memory_size(), 
 		   source, 
 		   new String[] {
-			 "description", "VM Memory Size in MB"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Vapp_name(), 
 		   source, 
 		   new String[] {
-			 "description", "vApp Name"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Orgvdcnetwork(), 
 		   source, 
 		   new String[] {
-			 "description", "Organization VDC Network to attach"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Provision(), 
 		   source, 
 		   new String[] {
-			 "description", "Install Docker binaries"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Publicip(), 
 		   source, 
 		   new String[] {
-			 "description", "Org Public IP to use"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Ssh_port(), 
 		   source, 
 		   new String[] {
-			 "description", "SSH port"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vCloud_Air_Vdcid(), 
 		   source, 
 		   new String[] {
-			 "description", "Virtual Data Center ID"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_VMware_vSphereEClass, 
@@ -5041,73 +5043,73 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_VMware_vSphere_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "vSphere Username"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Password(), 
 		   source, 
 		   new String[] {
-			 "description", "vSphere Password"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Boot2docker_url(), 
 		   source, 
 		   new String[] {
-			 "description", "URL for boot2docker image"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Compute_ip(), 
 		   source, 
 		   new String[] {
-			 "description", "Compute host IP where the Docker VM will be instantiated"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Cpu_count(), 
 		   source, 
 		   new String[] {
-			 "description", "CPU number for Docker VM"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Datacenter(), 
 		   source, 
 		   new String[] {
-			 "description", "Datacenter for Docker VM (must be set to ha-datacenter when connecting to a single host)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Datastore(), 
 		   source, 
 		   new String[] {
-			 "description", "Datastore for Docker VM"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Disk_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of disk for Docker VM (in MB)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Memory_size(), 
 		   source, 
 		   new String[] {
-			 "description", "Size of memory for Docker VM (in MB) "
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Network(), 
 		   source, 
 		   new String[] {
-			 "description", "Network where the Docker VM will be attached"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Pool(), 
 		   source, 
 		   new String[] {
-			 "description", "Resource pool for Docker VM"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_VMware_vSphere_Vcenter(), 
 		   source, 
 		   new String[] {
-			 "description", " IP/hostname for vCenter (or ESXi if connecting directly to a single host)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_ExoscaleEClass, 
@@ -5119,61 +5121,61 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Exoscale_Url(), 
 		   source, 
 		   new String[] {
-			 "description", "Your API endpoint."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Api_key(), 
 		   source, 
 		   new String[] {
-			 "description", "required Your API key."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Api_secret_key(), 
 		   source, 
 		   new String[] {
-			 "description", "required Your API secret key."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Instance_profile(), 
 		   source, 
 		   new String[] {
-			 "description", "Instance profile."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "Image template (e.g. ubuntu-16.04, ubuntu-15.10)."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Security_group(), 
 		   source, 
 		   new String[] {
-			 "description", "Security group. It will be created if it doesn\u2019t exist."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Availability_zone(), 
 		   source, 
 		   new String[] {
-			 "description", "Exoscale availability zone."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Ssh_user(), 
 		   source, 
 		   new String[] {
-			 "description", "SSH username, which must match the default SSH user for the used image."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Userdata(), 
 		   source, 
 		   new String[] {
-			 "description", "Path to file containing user data for cloud-init."
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Exoscale_Affinity_group(), 
 		   source, 
 		   new String[] {
-			 "description", "Affinity group the machine will be started in."
+			 "description", null
 		   });	
 		addAnnotation
 		  (machine_Grid5000EClass, 
@@ -5185,61 +5187,61 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getMachine_Grid5000_Username(), 
 		   source, 
 		   new String[] {
-			 "description", "Grid5000 account username"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Password(), 
 		   source, 
 		   new String[] {
-			 "description", "Grid5000 account password"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Site(), 
 		   source, 
 		   new String[] {
-			 "description", "Site to reserve the resources on"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Walltime(), 
 		   source, 
 		   new String[] {
-			 "description", "Timelife of the machine"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Ssh_private_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Path of your ssh private key"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Ssh_public_key(), 
 		   source, 
 		   new String[] {
-			 "description", "Path of your ssh public key"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Image(), 
 		   source, 
 		   new String[] {
-			 "description", "Name of the image to deploy"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Resource_properties(), 
 		   source, 
 		   new String[] {
-			 "description", "Resource selection with OAR properties (SQL format)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Use_job_reservation(), 
 		   source, 
 		   new String[] {
-			 "description", "Job ID to use (need to be an already existing job ID)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (getMachine_Grid5000_Host_to_provision(), 
 		   source, 
 		   new String[] {
-			 "description", "Host to provision (host need to be already deployed)"
+			 "description", null
 		   });	
 		addAnnotation
 		  (clusterEClass, 
@@ -5251,7 +5253,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		  (getCluster_Name(), 
 		   source, 
 		   new String[] {
-			 "description", "The cluster name."
+			 "description", null
 		   });
 	}
 

@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
-import org.occiware.clouddesigner.occi.docker.Mode;
 import org.occiware.clouddesigner.occi.docker.Network;
-import org.occiware.clouddesigner.occi.impl.LinkImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -332,6 +330,27 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getAux_address() {
 		return aux_address;
 	}
@@ -535,27 +554,6 @@ public class NetworkImpl extends org.occiware.clouddesigner.occi.infrastructure.
 		subnet = newSubnet;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__SUBNET, oldSubnet, subnet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__NAME, oldName, name));
 	}
 
 	/**

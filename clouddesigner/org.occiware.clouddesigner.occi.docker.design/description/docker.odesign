@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="docker" version="11.1.1.201610211630">
-  <ownedViewpoints name="Docker" label="Docker">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Docker configuration" domainClass="docker.Configuration">
-      <metamodel href="../../org.occiware.clouddesigner.occi.docker/model/Docker.ecore#/"/>
-      <metamodel href="../../org.occiware.clouddesigner.occi.infrastructure/model/Infrastructure.ecore#/"/>
-      <metamodel href="../../org.occiware.clouddesigner.occi/model/OCCI.ecore#/"/>
+  <ownedViewpoints name="DockerConfiguration" label="Docker Configuration">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DockerConfiguration Diagram" domainClass="Configuration">
+      <metamodel href="http://schemas.ogf.org/occi/core/ecore#/"/>
+      <metamodel href="http://occiware.org/occi/docker/ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Link" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Link" useDomainElement="true">
+        <edgeMappings name="Link" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Link" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
@@ -14,7 +13,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Volumesfrom" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Volumesfrom" useDomainElement="true">
+        <edgeMappings name="Volumesfrom" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Volumesfrom" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <centerLabelStyleDescription>
@@ -22,7 +21,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="NetworkLink" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.NetworkLink" useDomainElement="true">
+        <edgeMappings name="NetworkLink" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Network']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.NetworkLink" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
@@ -30,8 +29,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Machine">
-          <borderedNodeMappings name="DefineSwarmNode" preconditionExpression="[swarm and not swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="docker.Machine">
+        <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Machine">
+          <borderedNodeMappings name="DefineSwarmNode" preconditionExpression="[swarm and not swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="docker.Machine">
             <style xsi:type="style:DotDescription" labelExpression="" iconPath="/org.occiware.clouddesigner.occi.docker.design/images/cluster.gif" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -41,7 +40,7 @@
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="DefineSwarmMaster" preconditionExpression="[swarm and swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="docker.Machine">
+          <borderedNodeMappings name="DefineSwarmMaster" preconditionExpression="[swarm and swarm_master and state.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="docker.Machine">
             <style xsi:type="style:DotDescription" labelExpression="" iconPath="/org.occiware.clouddesigner.occi.docker.design/images/cluster.gif" labelPosition="node" backgroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -50,8 +49,8 @@
               <forbiddenSides>NORTH</forbiddenSides>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="docker.Container">
-            <borderedNodeMappings name="DetailContainer" preconditionExpression="[state.toString().equalsIgnoreCase('active') and self.monitored/]" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Container">
+          <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="docker.Container">
+            <borderedNodeMappings name="DetailContainer" preconditionExpression="[state.toString().equalsIgnoreCase('active') and self.monitored/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Container">
               <style xsi:type="style:GaugeCompositeStyleDescription" labelSize="6" showIcon="false" labelExpression="" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW" alignment="HORIZONTAL">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
@@ -93,7 +92,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Volume" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="docker.Volume">
+          <subNodeMappings name="Volume" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="docker.Volume">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.occiware.clouddesigner.occi.docker.design/images/Volume.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -130,7 +129,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Network" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Network">
+        <containerMappings name="Network" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Network">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -145,7 +144,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="[state.toString().equalsIgnoreCase('inactive')/]">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" roundedCorner="true" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='network_color']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -160,8 +159,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Cluster" labelDirectEdit="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Cluster">
-          <subContainerMappings name="Network" semanticCandidatesExpression="feature:resources" domainClass="docker.Network" reusedContainerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']"/>
+        <containerMappings name="Cluster" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Cluster">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="50" arcHeight="50" borderSizeComputationExpression="1" borderLineStyle="dash" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/swarm.gif" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_light_yellow']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -225,7 +223,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="containerDoubleClick" mappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="containerDoubleClick" mappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -246,7 +244,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Cluster" icon="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Cluster.gif">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="cluster" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Cluster']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/swarm.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="cluster" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Cluster']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/swarm.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -255,105 +253,105 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Docker Machine" icon="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Generic" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Generic.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Generic" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Generic.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Generic" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VirtualBox.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VirtualBox.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VirtualBox" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="OpenStack" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_OpenStack.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="OpenStack" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_OpenStack.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_OpenStack" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft Azure" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Azure.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft Azure" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Azure.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Azure" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware Fusion" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_Fusion.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware Fusion" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_Fusion.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_Fusion" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Rackspace" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Rackspace.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Rackspace" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Rackspace.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Rackspace" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vSphere" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vSphere.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vSphere" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vSphere.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vSphere" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Google CE" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Google_Compute_Engine.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Google CE" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Google_Compute_Engine.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Google_Compute_Engine" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="IBM SoftLayer" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_IBM_SoftLayer.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="IBM SoftLayer" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_IBM_SoftLayer.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_IBM_SoftLayer" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Amazon EC2" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Amazon_EC2.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Amazon EC2" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Amazon_EC2.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Amazon_EC2" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft_Hyper_V" label="Microsoft Hyperver-V" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Hyper_V.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft_Hyper_V" label="Microsoft Hyperver-V" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Microsoft_Hyper_V.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Microsoft_Hyper_V" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Digital Ocean" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Digital_Ocean.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Digital Ocean" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Digital_Ocean.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Digital_Ocean" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Exoscale" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Exoscale.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Exoscale" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_Exoscale.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_Exoscale" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vCloud Air" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vCloud_Air.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vCloud Air" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Machine_VMware_vCloud_Air.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machine_VMware_vCloud_Air" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Grid5k" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Grid5000.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Grid5k" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Grid5000.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -362,7 +360,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Container" icon="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/ContainerMenu.gif">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Container" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Container.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Container" nodeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Container.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -377,7 +375,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Link.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -390,14 +388,14 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Network" icon="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkMenu.gif">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Network.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Network.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Network" referenceName="resources" variableName="networkInstance"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='NetworkLink']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='NetworkLink']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -410,7 +408,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Volume" icon="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volume.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volume.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -425,7 +423,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Volume From" edgeMappings="//@ownedViewpoints[name='Docker']/@ownedRepresentations[name='Docker%20configuration']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Volume From" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.occiware.clouddesigner.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

@@ -45,7 +45,7 @@ public interface Machine_Generic extends Machine {
 	 * @see #setEngine_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Engine_port()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Port to use for Docker Daemon (Note: This flag will not work with boot2docker).'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getEngine_port();
@@ -71,8 +71,8 @@ public interface Machine_Generic extends Machine {
 	 * @return the value of the '<em>Ip address</em>' attribute.
 	 * @see #setIp_address(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ip_address()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description=' required IP Address of host.'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getIp_address();
@@ -99,7 +99,7 @@ public interface Machine_Generic extends Machine {
 	 * @see #setSsh_key(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ssh_key()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Path to the SSH user private key.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_key();
@@ -126,7 +126,7 @@ public interface Machine_Generic extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ssh_user()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='SSH username used to connect.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_user();
@@ -153,7 +153,7 @@ public interface Machine_Generic extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Generic_Ssh_port()
 	 * @model dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Port to use for SSH.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getSsh_port();

@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -46,7 +46,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @see #setZone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Zone()
 	 * @model default="us-central1-a" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The zone to launch the instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getZone();
@@ -74,7 +74,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @see #setMachine_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Machine_type()
 	 * @model default="f1-micro" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The type of instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getMachine_type();
@@ -102,7 +102,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Username()
 	 * @model default="docker-user" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The username to use for the instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -130,7 +130,7 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @see #setInstance_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Instance_name()
 	 * @model default="docker-machine" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The name of the instance'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getInstance_name();
@@ -156,8 +156,8 @@ public interface Machine_Google_Compute_Engine extends Machine {
 	 * @return the value of the '<em>Project</em>' attribute.
 	 * @see #setProject(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Google_Compute_Engine_Project()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='The name of your project to use when launching the instance'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getProject();

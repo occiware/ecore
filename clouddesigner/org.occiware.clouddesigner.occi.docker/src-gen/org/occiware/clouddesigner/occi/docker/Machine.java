@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -58,7 +58,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Name()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
 	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
@@ -86,7 +86,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_install_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_install_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Custom URL to use for engine installation [$MACHINE_DOCKER_INSTALL_URL]'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_install_url();
@@ -113,7 +113,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_opt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_opt()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify arbitrary flags to include with the created engine in the form flag=value'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_opt();
@@ -140,7 +140,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_insecure_registry(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_insecure_registry()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify insecure registries to allow with the created engine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_insecure_registry();
@@ -167,7 +167,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_registry_mirror(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_registry_mirror()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify registry mirrors to use [$ENGINE_REGISTRY_MIRROR]'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_registry_mirror();
@@ -194,7 +194,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_label(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_label()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify labels for the created engine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_label();
@@ -221,7 +221,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_storage_driver(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_storage_driver()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify a storage driver to use with the engine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_storage_driver();
@@ -248,7 +248,7 @@ public interface Machine extends Compute {
 	 * @see #setEngine_env(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Engine_env()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify environment variables to set in the engine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEngine_env();
@@ -275,7 +275,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Configure Machine with Swarm'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isSwarm();
@@ -302,7 +302,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_image(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_image()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Specify Docker image to use for Swarm [$MACHINE_SWARM_IMAGE]'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_image();
@@ -329,7 +329,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_master(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_master()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Configure Machine to be a Swarm master'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isSwarm_master();
@@ -356,7 +356,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_discovery(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_discovery()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Discovery service to use with Swarm'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_discovery();
@@ -383,7 +383,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_strategy(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_strategy()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Define a default scheduling strategy for Swarm'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_strategy();
@@ -410,7 +410,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_opt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_opt()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Define arbitrary flags for swarm'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_opt();
@@ -437,7 +437,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_host(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_host()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='ip/socket to listen on for Swarm master'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_host();
@@ -464,7 +464,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_addr(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_addr()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='addr to advertise for Swarm (default: detect and use the machine IP)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_addr();
@@ -491,7 +491,7 @@ public interface Machine extends Compute {
 	 * @see #setSwarm_experimental(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Swarm_experimental()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Enable Swarm experimental features'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSwarm_experimental();
@@ -518,7 +518,7 @@ public interface Machine extends Compute {
 	 * @see #setTls_san(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Tls_san()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Support extra SANs for TLS certs'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTls_san();

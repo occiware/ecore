@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -44,7 +44,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='URL for boot2docker image'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -72,7 +72,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of disk for host VM (in MB)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -100,7 +100,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setMemory_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_Memory_size()
 	 * @model default="1024" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of memory for host VM (in MB)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getMemory_size();
@@ -128,7 +128,7 @@ public interface Machine_VMware_Fusion extends Machine {
 	 * @see #setNo_share(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VMware_Fusion_No_share()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Disable the mount of your home directory.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isNo_share();

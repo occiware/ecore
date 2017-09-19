@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -34,6 +34,33 @@ package org.occiware.clouddesigner.occi.docker;
  */
 public interface Machine_Microsoft_Hyper_V extends Machine {
 	/**
+	 * Returns the value of the '<em><b>Virtual switch</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Virtual switch</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Virtual switch</em>' attribute.
+	 * @see #setVirtual_switch(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Virtual_switch()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getVirtual_switch();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtual switch</em>' attribute.
+	 * @see #getVirtual_switch()
+	 * @generated
+	 */
+	void setVirtual_switch(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Boot2docker url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -45,7 +72,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The URL of the boot2docker iso. Defaults to the latest available version'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -73,7 +100,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of disk for the host in MB'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -100,7 +127,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setStatic_macaddress(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Static_macaddress()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Hyper-V network adapter\u2019s static MAC address.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getStatic_macaddress();
@@ -127,7 +154,7 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @see #setVlan_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Vlan_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Hyper-V network adapter\u2019s VLAN ID if any.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getVlan_id();
@@ -141,32 +168,5 @@ public interface Machine_Microsoft_Hyper_V extends Machine {
 	 * @generated
 	 */
 	void setVlan_id(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Virtual switch</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Virtual switch</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Virtual switch</em>' attribute.
-	 * @see #setVirtual_switch(String)
-	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_Microsoft_Hyper_V_Virtual_switch()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Name of the virtual switch to use.'"
-	 * @generated
-	 */
-	String getVirtual_switch();
-
-	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Machine_Microsoft_Hyper_V#getVirtual_switch <em>Virtual switch</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Virtual switch</em>' attribute.
-	 * @see #getVirtual_switch()
-	 * @generated
-	 */
-	void setVirtual_switch(String value);
 
 } // Machine_Microsoft_Hyper_V

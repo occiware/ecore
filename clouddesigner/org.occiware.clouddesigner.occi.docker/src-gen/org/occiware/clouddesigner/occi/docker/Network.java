@@ -11,8 +11,6 @@
  */
 package org.occiware.clouddesigner.occi.docker;
 
-import org.occiware.clouddesigner.occi.Link;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +52,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setNetworkId(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_NetworkId()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The network ID retreived when the creation is done'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNetworkId();
@@ -70,6 +68,33 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	void setNetworkId(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Name()
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Network#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Aux address</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -81,7 +106,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setAux_address(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Aux_address()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Auxiliary IPv4 or IPv6 addresses used by Network driver (default map[])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAux_address();
@@ -108,7 +133,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setDriver(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Driver()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Driver to manage the Network (default \"bridge\")'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDriver();
@@ -135,7 +160,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setGateway(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Gateway()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='IPv4 or IPv6 Gateway for the master subnet (default [])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getGateway();
@@ -162,7 +187,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setInternal(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Internal()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Restrict external access to the network'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isInternal();
@@ -189,7 +214,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setIp_range(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Ip_range()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Allocate container ip from a sub-range (default [])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getIp_range();
@@ -216,7 +241,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setIpam_driver(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Ipam_driver()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='IP Address Management Driver (default \"default\")'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getIpam_driver();
@@ -243,7 +268,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setIpam_opt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Ipam_opt()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Set IPAM driver specific options (default map[])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getIpam_opt();
@@ -270,7 +295,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setIpv6(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Ipv6()
 	 * @model dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='Enable IPv6 networking'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isIpv6();
@@ -297,7 +322,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setOpt(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Opt()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Set driver specific options (default map[])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getOpt();
@@ -324,7 +349,7 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @see #setSubnet(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Subnet()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Subnet in CIDR format that represents a network segment (default [])'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSubnet();
@@ -338,32 +363,5 @@ public interface Network extends org.occiware.clouddesigner.occi.infrastructure.
 	 * @generated
 	 */
 	void setSubnet(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getNetwork_Name()
-	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The network name'"
-	 * @generated
-	 */
-	String getName();
-
-	/**
-	 * Sets the value of the '{@link org.occiware.clouddesigner.occi.docker.Network#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
-	void setName(String value);
 
 } // Network

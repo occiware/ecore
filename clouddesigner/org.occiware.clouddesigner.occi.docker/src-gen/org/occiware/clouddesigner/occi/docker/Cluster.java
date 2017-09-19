@@ -30,7 +30,6 @@ import org.occiware.clouddesigner.occi.infrastructure.Compute;
  * @generated
  */
 public interface Cluster extends Compute {
-
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -43,7 +42,7 @@ public interface Cluster extends Compute {
 	 * @see #setName(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getCluster_Name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The cluster name.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getName();
@@ -57,4 +56,5 @@ public interface Cluster extends Compute {
 	 * @generated
 	 */
 	void setName(String value);
+
 } // Cluster

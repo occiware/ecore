@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -64,8 +64,8 @@ public interface Machine_OpenStack extends Machine {
 	 * @return the value of the '<em>Flavor id</em>' attribute.
 	 * @see #setFlavor_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Flavor_id()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='The flavor ID to use when creating the machine'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_id();
@@ -92,7 +92,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFlavor_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Flavor_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS FLAVOR NAME'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFlavor_name();
@@ -118,8 +118,8 @@ public interface Machine_OpenStack extends Machine {
 	 * @return the value of the '<em>Image id</em>' attribute.
 	 * @see #setImage_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Image_id()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='The image ID to use when creating the machine'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_id();
@@ -146,7 +146,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setImage_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Image_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS IMAGE NAME'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImage_name();
@@ -172,8 +172,8 @@ public interface Machine_OpenStack extends Machine {
 	 * @return the value of the '<em>Auth url</em>' attribute.
 	 * @see #setAuth_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Auth_url()
-	 * @model dataType="org.occiware.clouddesigner.occi.String" required="true"
-	 *        annotation="OCCIE2Ecore description='Keystone service base URL'"
+	 * @model dataType="org.occiware.clouddesigner.occi.String"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAuth_url();
@@ -200,7 +200,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setUsername(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Username()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='User identifer to authenticate with'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getUsername();
@@ -227,7 +227,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setPassword(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Password()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='User password. It can be omitted if the standard environment variable OS_PASSWORD is set.'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPassword();
@@ -254,7 +254,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setTenant_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Tenant_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Identify the tenant in which the machine will be created'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTenant_name();
@@ -281,7 +281,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setTenant_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Tenant_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Identify the tenant in which the machine will be created'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getTenant_id();
@@ -308,7 +308,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setRegion(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Region()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The region to work on. Can be omitted if there is only one region on the OpenStack'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getRegion();
@@ -336,7 +336,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setEndpoint_type(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Endpoint_type()
 	 * @model default="publicURL" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='Endpoint type can be internalURL, adminURL on publicURL. If is a helper for the driver to choose the right URL in the OpenStack service catalog. If not provided the default id publicURL'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getEndpoint_type();
@@ -363,7 +363,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setNet_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Net_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The private network id the machine will be connected on. If your OpenStack project project contains only one private network it will be use automatically'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNet_id();
@@ -390,7 +390,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setNet_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Net_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS NETWORK NAME'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getNet_name();
@@ -417,7 +417,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setSec_groups(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Sec_groups()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='If security groups are available on your OpenStack you can specify a comma separated list to use for the machine (e.g. secgrp001,secgrp002)'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSec_groups();
@@ -444,7 +444,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setFloatingip_pool(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Floatingip_pool()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The IP pool that will be used to get a public IP an assign it to the machine. If there is an IP address already allocated but not assigned to any machine, this IP will be chosen and assigned to the machine. If there is no IP address already allocated a new IP will be allocated and assigned to the machine'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getFloatingip_pool();
@@ -472,7 +472,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setActive_timeout(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Active_timeout()
 	 * @model default="200" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The OS ACTIVE TIMEOUT'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getActive_timeout();
@@ -499,7 +499,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setAvailability_zone(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Availability_zone()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS AVAILABILITY ZONE'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getAvailability_zone();
@@ -526,7 +526,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setDomain_id(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Domain_id()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS DOMAIN ID'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDomain_id();
@@ -553,7 +553,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setDomain_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Domain_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS DOMAIN NAME'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getDomain_name();
@@ -581,7 +581,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setInsecure(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Insecure()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='The OS INSECURE'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isInsecure();
@@ -609,7 +609,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setIp_version(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Ip_version()
 	 * @model default="4" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The OS IP VERSION'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getIp_version();
@@ -636,7 +636,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setKeypair_name(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Keypair_name()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS KEYPAIR NAME'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getKeypair_name();
@@ -663,7 +663,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setPrivate_key_file(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Private_key_file()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS PRIVATE KEY FILE'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getPrivate_key_file();
@@ -691,7 +691,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setSsh_port(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Ssh_port()
 	 * @model default="22" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='The OS SSH PORT'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getSsh_port();
@@ -719,7 +719,7 @@ public interface Machine_OpenStack extends Machine {
 	 * @see #setSsh_user(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_OpenStack_Ssh_user()
 	 * @model default="root" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The OS SSH USER'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getSsh_user();

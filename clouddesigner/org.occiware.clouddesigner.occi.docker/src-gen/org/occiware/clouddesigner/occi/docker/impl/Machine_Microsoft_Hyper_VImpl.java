@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker.impl;
@@ -162,6 +162,27 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getVirtual_switch() {
+		return virtual_switch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVirtual_switch(String newVirtual_switch) {
+		String oldVirtual_switch = virtual_switch;
+		virtual_switch = newVirtual_switch;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH, oldVirtual_switch, virtual_switch));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getBoot2docker_url() {
 		return boot2docker_url;
 	}
@@ -239,27 +260,6 @@ public class Machine_Microsoft_Hyper_VImpl extends MachineImpl implements Machin
 		vlan_id = newVlan_id;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__VLAN_ID, oldVlan_id, vlan_id));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getVirtual_switch() {
-		return virtual_switch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setVirtual_switch(String newVirtual_switch) {
-		String oldVirtual_switch = virtual_switch;
-		virtual_switch = newVirtual_switch;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE_MICROSOFT_HYPER_V__VIRTUAL_SWITCH, oldVirtual_switch, virtual_switch));
 	}
 
 	/**

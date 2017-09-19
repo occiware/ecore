@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2015-2016 Inria
+ * Copyright (c) 2015-2016 Obeo, Inria
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  * 	
  * Contributors:
- * -Fawaz Paraiso <fawaz.paraiso@inria.fr>
+ * - William Piers <william.piers@obeo.fr>
  * - Philippe Merle <philippe.merle@inria.fr>
  */
 package org.occiware.clouddesigner.occi.docker;
@@ -51,7 +51,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setBoot2docker_url(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Boot2docker_url()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The URL of the boot2docker image. Default to the latest available version'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getBoot2docker_url();
@@ -79,7 +79,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setDisk_size(int)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Disk_size()
 	 * @model default="20000" dataType="org.occiware.clouddesigner.occi.Number"
-	 *        annotation="OCCIE2Ecore description='Size of disk for the host in MB'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	int getDisk_size();
@@ -107,7 +107,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setHost_dns_resolver(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Host_dns_resolver()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOST DNS RESOLVER\t'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isHost_dns_resolver();
@@ -134,7 +134,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setImport_boot2docker_vm(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Import_boot2docker_vm()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX BOOT2DOCKER IMPORT VM'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getImport_boot2docker_vm();
@@ -162,7 +162,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setHostonly_cidr(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_cidr()
 	 * @model default="192.168.99.1/24" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOSTONLY CIDR'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getHostonly_cidr();
@@ -190,7 +190,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setHostonly_nictype(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_nictype()
 	 * @model default="82540EM" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The \tVIRTUALBOX HOSTONLY NIC TYPE'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getHostonly_nictype();
@@ -218,7 +218,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setHostonly_nicpromisc(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Hostonly_nicpromisc()
 	 * @model default="deny" dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX HOSTONLY NIC PROMISC'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getHostonly_nicpromisc();
@@ -246,7 +246,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setNo_share(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_share()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO SHARE'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isNo_share();
@@ -274,7 +274,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setNo_dns_proxy(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_dns_proxy()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO DNS PROXY'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isNo_dns_proxy();
@@ -302,7 +302,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setNo_vtx_check(boolean)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_No_vtx_check()
 	 * @model default="false" dataType="org.occiware.clouddesigner.occi.Boolean"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX NO VTX CHECK'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	boolean isNo_vtx_check();
@@ -329,7 +329,7 @@ public interface Machine_VirtualBox extends Machine {
 	 * @see #setShare_folder(String)
 	 * @see org.occiware.clouddesigner.occi.docker.DockerPackage#getMachine_VirtualBox_Share_folder()
 	 * @model dataType="org.occiware.clouddesigner.occi.String"
-	 *        annotation="OCCIE2Ecore description='The VIRTUALBOX SHARE FOLDER'"
+	 *        annotation="OCCIE2Ecore description='null'"
 	 * @generated
 	 */
 	String getShare_folder();

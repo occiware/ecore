@@ -19,16 +19,17 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.occiware.clouddesigner.occi.OCCIPackage;
+
 import org.occiware.clouddesigner.occi.docker.DockerFactory;
 import org.occiware.clouddesigner.occi.docker.DockerPackage;
 import org.occiware.clouddesigner.occi.docker.Network;
-import org.occiware.clouddesigner.occi.provider.LinkItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.occiware.clouddesigner.occi.docker.Network} object.
@@ -88,6 +89,28 @@ public class NetworkItemProvider extends org.occiware.clouddesigner.occi.infrast
 				 getString("_UI_Network_networkId_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Network_networkId_feature", "_UI_Network_type"),
 				 DockerPackage.Literals.NETWORK__NETWORK_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Network_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Network_name_feature", "_UI_Network_type"),
+				 DockerPackage.Literals.NETWORK__NAME,
 				 true,
 				 false,
 				 false,
@@ -308,28 +331,6 @@ public class NetworkItemProvider extends org.occiware.clouddesigner.occi.infrast
 				 getString("_UI_Network_subnet_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Network_subnet_feature", "_UI_Network_type"),
 				 DockerPackage.Literals.NETWORK__SUBNET,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Network_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Network_name_feature", "_UI_Network_type"),
-				 DockerPackage.Literals.NETWORK__NAME,
 				 true,
 				 false,
 				 false,

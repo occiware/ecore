@@ -1,0 +1,562 @@
+h1. 
+
+| *Name* | docker |
+| *Scheme* | http://occiware.org/occi/docker# |
+
+Imported OCCI Extensions:
+
+| *Name* | *Scheme* |
+| <a href="core.textile">core</a> | http://schemas.ogf.org/occi/core# |
+| <a href="infrastructure.textile">infrastructure</a> | http://schemas.ogf.org/occi/infrastructure# |
+
+h1. Kinds
+
+h2. Kind container
+
+| *Term* | container |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Container Resource |
+| *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
+
+Attributes of container are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| containerid | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| build | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| command | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ports | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| expose | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| volumes | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| environment | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| env_file | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| net | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| dns | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| dns_search | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cap_add | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cap_drop | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| working_dir | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| entrypoint | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| user | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| domainname | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| mem_limit | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| memory_swap | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| privileged | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| restart | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| stdin_open | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| interactive | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| tty | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| cpu_shares | <a href="core.textile#datatype-number">Number</a> | false | true | 0 |  |
+| pid | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ipc | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| add_host | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| mac_address | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| rm | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| security_opt | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| device | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| lxc_conf | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cpuset | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| publish_all | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| read_only | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| monitored | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| cpu_used | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| memory_used | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| cpu_percent | <a href="core.textile#datatype-string">String</a> | false | true | 0 |  |
+| memory_percent | <a href="core.textile#datatype-string">String</a> | false | true | 0 |  |
+| disk_used | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| disk_percent | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| bandwidth_used | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| bandwidth_percent | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| monitoring_interval | <a href="core.textile#datatype-number">Number</a> | false | true | 1000 |  |
+| cpu_max_value | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| memory_max_value | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| core_max | <a href="core.textile#datatype-number">Number</a> | false | true | 1 |  |
+
+Actions of container are:
+
+| *Term* | *Scheme* | *Attributes* | *Title* |
+| create | http://occiware.org/occi/docker/container/action# |  |  |
+| start | http://occiware.org/occi/docker/container/action# |  |  |
+| stop | http://occiware.org/occi/docker/container/action# |  |  |
+| run | http://occiware.org/occi/docker/container/action# |  |  |
+| pause | http://occiware.org/occi/docker/container/action# |  |  |
+| unpause | http://occiware.org/occi/docker/container/action# |  |  |
+| kill | http://occiware.org/occi/docker/container/action# | signal=<a href="core.textile#datatype-string">String</a> |  |
+
+
+h2. Kind link
+
+| *Term* | link |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Link between containers |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of link are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| alias | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind networkLink
+
+| *Term* | networkLink |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* |  |
+| *Parent* | <a href="docker.textile#kind-link">http://occiware.org/occi/docker#link</a> |
+
+h2. Kind volumesfrom
+
+| *Term* | volumesfrom |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | VolumsFrom |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+Attributes of volumesfrom are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| mode | <a href="docker.textile#enum-mode">Mode</a> | false | true | read_write |  |
+
+
+h2. Kind contains
+
+| *Term* | contains |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* |  |
+| *Parent* | <a href="core.textile#kind-link">http://schemas.ogf.org/occi/core#link</a> |
+
+h2. Kind machine
+
+| *Term* | machine |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine Resource |
+| *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
+
+Attributes of machine are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_install_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_opt | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_insecure_registry | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_registry_mirror | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_label | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_storage_driver | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| engine_env | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| swarm_image | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_master | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| swarm_discovery | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_strategy | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_opt | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_host | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_addr | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| swarm_experimental | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| tls_san | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind volume
+
+| *Term* | volume |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Volume disk |
+| *Parent* | <a href="infrastructure.textile#kind-storage">http://schemas.ogf.org/occi/infrastructure#storage</a> |
+
+Attributes of volume are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| driver | <a href="core.textile#datatype-string">String</a> | false | true | local |  |
+| labels | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| options | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| source | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| destination | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| mode | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| rw | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| propagation | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind network
+
+| *Term* | network |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Network resource |
+| *Parent* | <a href="infrastructure.textile#kind-network">http://schemas.ogf.org/occi/infrastructure#network</a> |
+
+Attributes of network are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| networkId | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| aux_address | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| driver | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| gateway | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| internal | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| ip_range | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ipam_driver | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ipam_opt | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ipv6 | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| opt | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| subnet | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_Generic
+
+| *Term* | machine_Generic |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Create machines using an existing VM/Host with SSH |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Generic are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| engine_port | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| ip_address | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_user | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_port | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+
+
+h2. Kind machine_Amazon_EC2
+
+| *Term* | machine_Amazon_EC2 |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Amazon EC2 |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Amazon_EC2 are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| access_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ami | <a href="core.textile#datatype-string">String</a> | false | true | ami-4ae27e22 |  |
+| instance_type | <a href="core.textile#datatype-string">String</a> | false | true | t2.micro |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | true | us-east-1 |  |
+| root_size | <a href="core.textile#datatype-number">Number</a> | false | true | 16 |  |
+| secret_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| security_group | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+| session_token | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| subnet_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| vpc_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| zone | <a href="core.textile#datatype-string">String</a> | false | true | a |  |
+
+
+h2. Kind machine_Digital_Ocean
+
+| *Term* | machine_Digital_Ocean |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Digital Ocean |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Digital_Ocean are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| access_token | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true | docker |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | true | nyc3 |  |
+| size | <a href="core.textile#datatype-string">String</a> | false | true | 512mb |  |
+
+
+h2. Kind machine_Google_Compute_Engine
+
+| *Term* | machine_Google_Compute_Engine |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Google Compute Engine |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Google_Compute_Engine are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| zone | <a href="core.textile#datatype-string">String</a> | false | true | us-central1-a |  |
+| machine_type | <a href="core.textile#datatype-string">String</a> | false | true | f1-micro |  |
+| username | <a href="core.textile#datatype-string">String</a> | false | true | docker-user |  |
+| instance_name | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+| project | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_IBM_SoftLayer
+
+| *Term* | machine_IBM_SoftLayer |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on IBM SoftLayer |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_IBM_SoftLayer are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| api_endpoint | <a href="core.textile#datatype-string">String</a> | false | true | api.softlayer.com/rest/v3 |  |
+| user | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cpu | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| disk_size | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| domain | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| hourly_billing | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true | UBUNTU_LATEST |  |
+| local_disk | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| private_net_only | <a href="core.textile#datatype-boolean">Boolean</a> | false | true |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| public_vlan_id | <a href="core.textile#datatype-string">String</a> | false | true | 0 |  |
+| private_vlan_id | <a href="core.textile#datatype-string">String</a> | false | true | 0 |  |
+
+
+h2. Kind machine_Microsoft_Azure
+
+| *Term* | machine_Microsoft_Azure |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Microsoft Azure |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Microsoft_Azure are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| subscription_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| subscription_cert | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| environment | <a href="core.textile#datatype-string">String</a> | false | true | AzurePublicCloud |  |
+| location | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| resource_group | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+| size | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_user | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| vnet | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+| subnet | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| subnet_prefix | <a href="core.textile#datatype-string">String</a> | false | true | 192.168.0.0/16 |  |
+| availability_set | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+| open_port | <a href="core.textile#datatype-number">Number</a> | false | true |  |  |
+| private_ip_address | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| no_public_ip | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| static_public_ip | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| docker_port | <a href="core.textile#datatype-string">String</a> | false | true | 2376 |  |
+| use_private_ip | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_Microsoft_Hyper_V
+
+| *Term* | machine_Microsoft_Hyper_V |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Microsoft Hyper-V |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Microsoft_Hyper_V are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| virtual_switch | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| boot2docker_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| disk_size | <a href="core.textile#datatype-number">Number</a> | false | true | 20000 |  |
+| static_macaddress | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| vlan_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_OpenStack
+
+| *Term* | machine_OpenStack |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on OpenStack |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_OpenStack are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| flavor_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| flavor_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| auth_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| username | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| tenant_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| tenant_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| endpoint_type | <a href="core.textile#datatype-string">String</a> | false | true | publicURL |  |
+| net_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| net_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| sec_groups | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| floatingip_pool | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| active_timeout | <a href="core.textile#datatype-number">Number</a> | false | true | 200 |  |
+| availability_zone | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| domain_id | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| domain_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| insecure | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| ip_version | <a href="core.textile#datatype-number">Number</a> | false | true | 4 |  |
+| keypair_name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| private_key_file | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_port | <a href="core.textile#datatype-number">Number</a> | false | true | 22 |  |
+| ssh_user | <a href="core.textile#datatype-string">String</a> | false | true | root |  |
+
+
+h2. Kind machine_Rackspace
+
+| *Term* | machine_Rackspace |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on Rackspace cloud |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Rackspace are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| region | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| endpoint_type | <a href="core.textile#datatype-string">String</a> | false | true | publicURL |  |
+| image_id | <a href="core.textile#datatype-string">String</a> | false | true | 59a3fadd-93e7-4674-886a-64883e17115f |  |
+| flavor_id | <a href="core.textile#datatype-string">String</a> | false | true | general1-1 |  |
+| ssh_user | <a href="core.textile#datatype-string">String</a> | false | true | root |  |
+| ssh_port | <a href="core.textile#datatype-number">Number</a> | false | true | 22 |  |
+| docker_install | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | true |  |
+
+
+h2. Kind machine_VirtualBox
+
+| *Term* | machine_VirtualBox |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on VirtualBox |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_VirtualBox are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| boot2docker_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| disk_size | <a href="core.textile#datatype-number">Number</a> | false | true | 20000 |  |
+| host_dns_resolver | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| import_boot2docker_vm | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| hostonly_cidr | <a href="core.textile#datatype-string">String</a> | false | true | 192.168.99.1/24 |  |
+| hostonly_nictype | <a href="core.textile#datatype-string">String</a> | false | true | 82540EM |  |
+| hostonly_nicpromisc | <a href="core.textile#datatype-string">String</a> | false | true | deny |  |
+| no_share | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| no_dns_proxy | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| no_vtx_check | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+| share_folder | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_VMware_Fusion
+
+| *Term* | machine_VMware_Fusion |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on VMware Fusion |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_VMware_Fusion are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| boot2docker_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| disk_size | <a href="core.textile#datatype-number">Number</a> | false | true | 20000 |  |
+| memory_size | <a href="core.textile#datatype-number">Number</a> | false | true | 1024 |  |
+| no_share | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | false |  |
+
+
+h2. Kind machine_VMware_vCloud_Air
+
+| *Term* | machine_VMware_vCloud_Air |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on VMware vCloud Air |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_VMware_vCloud_Air are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| catalog | <a href="core.textile#datatype-string">String</a> | false | true | Public Catalog |  |
+| catalogitem | <a href="core.textile#datatype-string">String</a> | false | true | Ubuntu Server 12.04 LTS (amd64 20140927) |  |
+| computeid | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cpu_count | <a href="core.textile#datatype-number">Number</a> | false | true | 1 |  |
+| docker_port | <a href="core.textile#datatype-number">Number</a> | false | true | 2376 |  |
+| edgegateway | <a href="core.textile#datatype-string">String</a> | false | true | <vdcid> |  |
+| memory_size | <a href="core.textile#datatype-number">Number</a> | false | true | 2048 |  |
+| vapp_name | <a href="core.textile#datatype-string">String</a> | false | true | <autogenerated> |  |
+| orgvdcnetwork | <a href="core.textile#datatype-string">String</a> | false | true | <vdcid>-default-routed |  |
+| provision | <a href="core.textile#datatype-boolean">Boolean</a> | false | true | true |  |
+| publicip | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_port | <a href="core.textile#datatype-number">Number</a> | false | true | 22 |  |
+| vdcid | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_VMware_vSphere
+
+| *Term* | machine_VMware_vSphere |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine on VMware vSphere |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_VMware_vSphere are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| boot2docker_url | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| compute_ip | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| cpu_count | <a href="core.textile#datatype-number">Number</a> | false | true | 2 |  |
+| datacenter | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| datastore | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| disk_size | <a href="core.textile#datatype-number">Number</a> | false | true | 20000 |  |
+| memory_size | <a href="core.textile#datatype-number">Number</a> | false | true | 2048 |  |
+| network | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| pool | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| vcenter | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind machine_Exoscale
+
+| *Term* | machine_Exoscale |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Machine Exoscale |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Exoscale are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| url | <a href="core.textile#datatype-string">String</a> | false | true | https://api.exoscale.ch/compute |  |
+| api_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| api_secret_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| instance_profile | <a href="core.textile#datatype-string">String</a> | false | true | small |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true | ubuntu-16.04 |  |
+| security_group | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| availability_zone | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_user | <a href="core.textile#datatype-string">String</a> | false | true | ubuntu |  |
+| userdata | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| affinity_group | <a href="core.textile#datatype-string">String</a> | false | true | docker-machine |  |
+
+
+h2. Kind machine_Grid5000
+
+| *Term* | machine_Grid5000 |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Grid5000 cluster |
+| *Parent* | <a href="docker.textile#kind-machine">http://occiware.org/occi/docker#machine</a> |
+
+Attributes of machine_Grid5000 are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| username | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| password | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| site | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| walltime | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_private_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| ssh_public_key | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| image | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| resource_properties | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| use_job_reservation | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+| host_to_provision | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+h2. Kind cluster
+
+| *Term* | cluster |
+| *Scheme* | http://occiware.org/occi/docker# |
+| *Title* | Docker cluster |
+| *Parent* | <a href="infrastructure.textile#kind-compute">http://schemas.ogf.org/occi/infrastructure#compute</a> |
+
+Attributes of cluster are:
+
+| *Attribute* | *Type* | *Required* | *Mutable* | *Default* | *Description* |
+| name | <a href="core.textile#datatype-string">String</a> | false | true |  |  |
+
+
+
+h1. Types
+
+h2. Enum Mode
+
+:
+* read_write  
+* read_only  
+
+Generated at Tue Sep 19 10:22:27 CEST 2017 from platform:/resource/org.occiware.clouddesigner.occi.docker/model/docker.occie by org.occiware.clouddesigner.occi.gen.doc
